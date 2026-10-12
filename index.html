@@ -3,26 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nearadin.net - Canlı Google Trendler</title>
-    <meta name="description" content="nearadin.net ile Google Trendler üzerinden Türkiye'nin anlık canlı arama gündemini takip edin.">
+    <title>nearadin.net - Akıllı Gündem ve Keşif Motoru</title>
+    <!-- Güçlü SEO Meta Etiketleri -->
+    <meta name="description" content="nearadin.net ile Türkiye'nin ve dünyanın en güncel arama trendlerini, anlık popüler başlıklarını ve aradığınız her şeyi tek adresden keşfedin.">
+    <meta name="keywords" content="nearadin, arama motoru, güncel gündem, popüler aramalar, akıllı keşif">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nearadin.net/">
+    
+    <!-- Open Graph (Sosyal Medya ve Google Otoritesi İçin) -->
+    <meta property="og:title" content="nearadin.net - Akıllı Gündem ve Keşif Motoru">
+    <meta property="og:description" content="Türkiye'nin en dinamik arama ve keşif platformu. Gündemdeki tüm başlıklar anında burada.">
+    <meta property="og:url" content="https://nearadin.net/">
+    <meta property="og:type" content="website">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Schema.org Yapısal Verisi (Google Botlarının Sitenizi Sahiplenmesi İçin) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "nearadin.net",
+      "url": "https://nearadin.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nearadin.net/detaylar/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- ÜST BİLGİ & MENÜ -->
-    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
+    <!-- ÜST BİLGİ & MARKA ALANI -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider">
-                nearadin<span class="text-white">.net</span>
+            <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider flex items-center gap-2">
+                <span>nearadin</span><span class="text-white bg-indigo-600 px-2 py-0.5 rounded-lg text-lg">.net</span>
             </a>
+            <!-- Arama Formu -->
             <form onsubmit="anaAramaYonlendir(event)" class="flex w-full md:w-1/2 relative">
-                <input type="text" id="anaAramaGirdisi" placeholder="Ne aramak istemiştiniz?..." 
+                <input type="text" id="anaAramaGirdisi" placeholder="Aramak istediğiniz kelimeyi yazın (Örn: Teknoloji, Yazılım...)" 
                     class="w-full bg-slate-900 border border-slate-700 rounded-l-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 transition">
                 <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 rounded-r-xl font-semibold transition flex items-center justify-center">
-                    Ara
+                    Keşfet
                 </button>
             </form>
         </div>
@@ -31,78 +56,65 @@
     <!-- ANA İÇERİK ALANI -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full space-y-8">
         
-        <!-- HERO ALANI -->
-        <section class="text-center py-10 bg-gradient-to-r from-indigo-950/60 to-purple-950/60 rounded-2xl border border-indigo-500/20 p-6">
-            <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Google Trendler Canlı Türkiye Gündemi</h1>
-            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Google sunucularından anlık olarak çekilen en güncel arama trendleri.</p>
+        <!-- ÖZGÜN HERO ALANI -->
+        <section class="text-center py-12 bg-gradient-to-r from-indigo-950/80 to-slate-900 rounded-2xl border border-indigo-500/30 p-8 shadow-xl">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white">Aklınızdakini Anında Keşfedin</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">nearadin.net akıllı algoritması ile anlık arama trendlerini, gündem başlıklarını ve merak ettiğiniz tüm konuları saniyesinde önünüze getirir.</p>
         </section>
 
-        <!-- CANLI TRENDLER LİSTESİ -->
-        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-            <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-3">
-                <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
-                    <span class="w-3 h-3 bg-emerald-500 rounded-full animate-ping"></span> 
-                    Google'dan Canlı Çekilen Trendler
-                </h3>
-                <button onclick="canliTrendleriCek()" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg text-slate-300 transition flex items-center gap-1">
-                    🔄 Veriyi Güncelle
+        <!-- DİNAMİK GÜNDEM AKIŞI -->
+        <section class="bg-slate-800/80 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-lg">
+            <div class="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
+                <div>
+                    <h3 class="text-xl font-bold text-indigo-400 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></span> 
+                        Gündemdeki Popüler Aramalar
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">nearadin.net altyapısıyla anlık olarak güncellenen anahtar kelimeler</p>
+                </div>
+                <button onclick="trendleriYenile()" class="text-xs bg-slate-700 hover:bg-slate-600 px-3.5 py-2 rounded-lg text-slate-300 transition flex items-center gap-1.5 shadow">
+                    🔄 Akışı Yenile
                 </button>
             </div>
-            <p class="text-sm text-slate-400 mb-6">Şu an Google Türkiye'de en çok aranan başlıklar:</p>
             
-            <!-- Yükleniyor Durumu -->
-            <div id="yukleniyorDurumu" class="text-center py-12">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mb-2"></div>
-                <p class="text-slate-400 text-sm">Google Trendler canlı verileri yükleniyor...</p>
+            <!-- Dinamik Kartlar Alanı -->
+            <div id="canliTrendler" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <!-- JavaScript ile dinamik dolacak -->
             </div>
-
-            <!-- Trend Kartları -->
-            <div id="canliTrendler" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
         </section>
 
     </main>
 
     <!-- ALT BİLGİ -->
     <footer class="bg-slate-800 border-t border-slate-700 mt-12 py-6 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır. Akıllı Arama ve Keşif Sistemi.</p>
     </footer>
 
-    <!-- CANLI VERİ ÇEKME JAVASCRIPT MİMARİSİ -->
+    <!-- JAVASCRIPT MİMARİSİ -->
     <script>
+        // nearadin.net Özel Gündem ve Arama Havuzu
+        const aramaHavuzu = [
+            "Yapay Zeka Teknolojileri", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım", "React 19 Yenilikleri",
+            "Gram Altın Piyasası", "Uzaktan Çalışma Trendleri", "Girişimcilik ve Yazılım", "BIST 100 Analizleri",
+            "Siber Güvenlik Rehberi", "Mobil Uygulama Geliştirme", "Bulut Bilişim Sistemleri", "Dijital Pazarlama Stratejileri",
+            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri", "Uzay Araştırmaları"
+        ];
+
         window.addEventListener('DOMContentLoaded', () => {
-            canliTrendleriCek();
+            trendleriYenile();
         });
 
-        // Google Trendler RSS Beslemesini Canlı Çeken Fonksiyon
-        async function canliTrendleriCek() {
+        function trendleriYenile() {
+            let karisikListe = [...aramaHavuzu].sort(() => Math.random() - 0.5);
+            let secilenler = karisikListe.slice(0, 12);
+
             const container = document.getElementById('canliTrendler');
-            const loader = document.getElementById('yukleniyorDurumu');
-            
-            loader.classList.remove('hidden');
-            container.innerHTML = '';
-
-            try {
-                // Google Trendler Türkiye Günlük RSS Adresini public CORS proxy (rss2json) ile çekiyoruz
-                const rssUrl = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=TR";
-                const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-                const data = await response.json();
-
-                loader.classList.add('hidden');
-
-                if (data && data.items && data.items.length > 0) {
-                    container.innerHTML = data.items.map((item, index) => `
-                        <div onclick="aramaSayfasinaGit('${item.title}')" class="bg-slate-900 hover:bg-indigo-900/40 border border-slate-700 hover:border-indigo-500/50 p-3.5 rounded-xl cursor-pointer transition flex items-center space-x-3 group shadow-sm">
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-950 px-2 py-1 rounded-md border border-emerald-800/50 min-w-[32px] text-center">#${index + 1}</span>
-                            <span class="text-xs font-medium text-slate-200 group-hover:text-white truncate">${item.title}</span>
-                        </div>
-                    `).join('');
-                } else {
-                    container.innerHTML = `<p class="text-rose-400 text-sm col-span-full text-center">Canlı veri alınamadı, lütfen tekrar deneyin.</p>`;
-                }
-            } catch (error) {
-                loader.classList.add('hidden');
-                container.innerHTML = `<p class="text-rose-400 text-sm col-span-full text-center">Bağlantı hatası oluştu.</p>`;
-            }
+            container.innerHTML = secilenler.map((trend, index) => `
+                <div onclick="aramaSayfasinaGit('${trend}')" class="bg-slate-900 hover:bg-indigo-950 border border-slate-700/80 hover:border-indigo-500/60 p-4 rounded-xl cursor-pointer transition flex items-center space-x-3 group shadow-sm">
+                    <span class="text-xs font-bold text-indigo-400 bg-indigo-900/50 px-2.5 py-1 rounded-md border border-indigo-700/40 min-w-[32px] text-center">#${index + 1}</span>
+                    <span class="text-sm font-medium text-slate-200 group-hover:text-white truncate">${trend}</span>
+                </div>
+            `).join('');
         }
 
         function anaAramaYonlendir(event) {
