@@ -3,51 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nearadin.net - Akıllı Gündem ve Keşif Motoru</title>
-    <!-- Güçlü SEO Meta Etiketleri -->
-    <meta name="description" content="nearadin.net ile Türkiye'nin ve dünyanın en güncel arama trendlerini, anlık popüler başlıklarını ve aradığınız her şeyi tek adresden keşfedin.">
-    <meta name="keywords" content="nearadin, arama motoru, güncel gündem, popüler aramalar, akıllı keşif">
+    <title>nearadin.net - Günün Trend Sorguları ve Gündem</title>
+    <!-- SEO Meta Etiketleri -->
+    <meta name="description" content="nearadin.net ile günün trend sorgularını, gündemden öne çıkan başlıkları ve merak ettiğiniz her şeyi anında keşfedin.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nearadin.net/">
-    
-    <!-- Open Graph (Sosyal Medya ve Google Otoritesi İçin) -->
-    <meta property="og:title" content="nearadin.net - Akıllı Gündem ve Keşif Motoru">
-    <meta property="og:description" content="Türkiye'nin en dinamik arama ve keşif platformu. Gündemdeki tüm başlıklar anında burada.">
-    <meta property="og:url" content="https://nearadin.net/">
-    <meta property="og:type" content="website">
-
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Schema.org Yapısal Verisi (Google Botlarının Sitenizi Sahiplenmesi İçin) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "nearadin.net",
-      "url": "https://nearadin.net/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://nearadin.net/detaylar/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
 
     <!-- ÜST BİLGİ & MARKA ALANI -->
     <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider flex items-center gap-2">
+            <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider flex items-center gap-1">
                 <span>nearadin</span><span class="text-white bg-indigo-600 px-2 py-0.5 rounded-lg text-lg">.net</span>
             </a>
             <!-- Arama Formu -->
             <form onsubmit="anaAramaYonlendir(event)" class="flex w-full md:w-1/2 relative">
-                <input type="text" id="anaAramaGirdisi" placeholder="Aramak istediğiniz kelimeyi yazın (Örn: Teknoloji, Yazılım...)" 
+                <input type="text" id="anaAramaGirdisi" placeholder="Aramak istediğiniz kelimeyi yazın..." 
                     class="w-full bg-slate-900 border border-slate-700 rounded-l-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 transition">
                 <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 rounded-r-xl font-semibold transition flex items-center justify-center">
-                    Keşfet
+                    Ara
                 </button>
             </form>
         </div>
@@ -57,29 +34,29 @@
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full space-y-8">
         
         <!-- ÖZGÜN HERO ALANI -->
-        <section class="text-center py-12 bg-gradient-to-r from-indigo-950/80 to-slate-900 rounded-2xl border border-indigo-500/30 p-8 shadow-xl">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white">Aklınızdakini Anında Keşfedin</h1>
-            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">nearadin.net akıllı algoritması ile anlık arama trendlerini, gündem başlıklarını ve merak ettiğiniz tüm konuları saniyesinde önünüze getirir.</p>
+        <section class="text-center py-10 bg-gradient-to-r from-indigo-950/80 to-slate-900 rounded-2xl border border-indigo-500/30 p-6 shadow-xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight text-white">Gündemden Öne Çıkanlar</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">nearadin.net ile günün trend sorgularını ve en çok merak edilen başlıkları saniyesinde keşfedin.</p>
         </section>
 
-        <!-- DİNAMİK GÜNDEM AKIŞI -->
-        <section class="bg-slate-800/80 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-lg">
+        <!-- GÜNÜN TREND SORGULARI LİSTESİ -->
+        <section class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700 shadow-lg">
             <div class="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
                 <div>
-                    <h3 class="text-xl font-bold text-indigo-400 flex items-center gap-2">
+                    <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
                         <span class="w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></span> 
-                        Gündemdeki Popüler Aramalar
+                        Günün Trend Sorguları
                     </h3>
-                    <p class="text-xs text-slate-400 mt-1">nearadin.net altyapısıyla anlık olarak güncellenen anahtar kelimeler</p>
+                    <p class="text-xs text-slate-400 mt-1">Anlık olarak güncellenen popüler arama başlıkları</p>
                 </div>
                 <button onclick="trendleriYenile()" class="text-xs bg-slate-700 hover:bg-slate-600 px-3.5 py-2 rounded-lg text-slate-300 transition flex items-center gap-1.5 shadow">
                     🔄 Akışı Yenile
                 </button>
             </div>
             
-            <!-- Dinamik Kartlar Alanı -->
+            <!-- Sonuçların Listeleneceği Alan (Garanti Dolum) -->
             <div id="canliTrendler" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                <!-- JavaScript ile dinamik dolacak -->
+                <!-- JavaScript ile anında dolacak -->
             </div>
         </section>
 
@@ -87,17 +64,18 @@
 
     <!-- ALT BİLGİ -->
     <footer class="bg-slate-800 border-t border-slate-700 mt-12 py-6 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır. Akıllı Arama ve Keşif Sistemi.</p>
+        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
     </footer>
 
     <!-- JAVASCRIPT MİMARİSİ -->
     <script>
-        // nearadin.net Özel Gündem ve Arama Havuzu
-        const aramaHavuzu = [
-            "Yapay Zeka Teknolojileri", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım", "React 19 Yenilikleri",
+        // nearadin.net Özgün Gündem ve Trend Sorgu Havuzu
+        const gundemHavuzu = [
+            "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım", "React 19 Yenilikleri",
             "Gram Altın Piyasası", "Uzaktan Çalışma Trendleri", "Girişimcilik ve Yazılım", "BIST 100 Analizleri",
             "Siber Güvenlik Rehberi", "Mobil Uygulama Geliştirme", "Bulut Bilişim Sistemleri", "Dijital Pazarlama Stratejileri",
-            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri", "Uzay Araştırmaları"
+            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri", "Uzay Araştırmaları",
+            "Türkiye Hava Durumu", "Asgari Ücret Gelişmeleri", "Süper Lig Puan Durumu", "En İyi Bilgisayar Oyunları"
         ];
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -105,14 +83,15 @@
         });
 
         function trendleriYenile() {
-            let karisikListe = [...aramaHavuzu].sort(() => Math.random() - 0.5);
-            let secilenler = karisikListe.slice(0, 12);
+            // Havuzu karıştırarak dinamik ve her yenilemede taze bir görünüm sağla
+            let karisikListe = [...gundemHavuzu].sort(() => Math.random() - 0.5);
+            let secilenler = karisikListe.slice(0, 16);
 
             const container = document.getElementById('canliTrendler');
             container.innerHTML = secilenler.map((trend, index) => `
-                <div onclick="aramaSayfasinaGit('${trend}')" class="bg-slate-900 hover:bg-indigo-950 border border-slate-700/80 hover:border-indigo-500/60 p-4 rounded-xl cursor-pointer transition flex items-center space-x-3 group shadow-sm">
+                <div onclick="aramaSayfasinaGit('${trend}')" class="bg-slate-900 hover:bg-indigo-950 border border-slate-700/80 hover:border-indigo-500/60 p-3.5 rounded-xl cursor-pointer transition flex items-center space-x-3 group shadow-sm">
                     <span class="text-xs font-bold text-indigo-400 bg-indigo-900/50 px-2.5 py-1 rounded-md border border-indigo-700/40 min-w-[32px] text-center">#${index + 1}</span>
-                    <span class="text-sm font-medium text-slate-200 group-hover:text-white truncate">${trend}</span>
+                    <span class="text-xs font-medium text-slate-200 group-hover:text-white truncate">${trend}</span>
                 </div>
             `).join('');
         }
