@@ -3,12 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayfa Bulunamadı - nearadin.net</title>
+    <title>Yönlendiriliyor... - nearadin.net</title>
     <!-- SEO Meta Etiketleri -->
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://nearadin.net/">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- OTOMATİK YÖNLENDİRME MİMARİSİ -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const pathname = window.location.pathname;
+            const pathSegments = pathname.split('/').filter(Boolean);
+            
+            // Eğer kök dizin veya ana sayfa değilse, URL'deki son anlamlı parçayı al
+            if (pathSegments.length > 0) {
+                // Son parçayı al (Örn: "andras-baka-macaristanin-yeni-cumhurbaskani.html")
+                let sonParca = pathSegments[pathSegments.length - 1];
+                
+                // Uzantıyı ve tireleri temizleyip okunabilir arama sorgusuna dönüştür
+                let aramaSorgusu = sonParca
+                    .replace(/\.[^/.]+$/, "") // .html veya .php uzantısını kaldır
+                    .replace(/[-_]/g, ' ');    // Tire ve alt çizgileri boşluğa çevir
+                
+                if (aramaSorgusu && aramaSorgusu !== '404' && aramaSorgusu !== 'index') {
+                    // Kullanıcıya bilgi verip anında detaylar sayfasına yönlendir
+                    document.getElementById('yonlendirmeMesaji').innerText = `"${aramaSorgusu}" içeriği aranıyor, yönlendiriliyorsunuz...`;
+                    setTimeout(() => {
+                        window.location.replace(`/detaylar/?q=${encodeURIComponent(aramaSorgusu)}`);
+                    }, 400); // 0.4 saniye sonra kusursuz geçiş
+                    return;
+                }
+            }
+            
+            // Eğer URL'den anlamlı bir metin çıkmazsa manuel arama ekranını göster
+            document.getElementById('manuelAramaAlani').classList.remove('hidden');
+            document.getElementById('yuklemeAlani').classList.add('hidden');
+        });
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
 
@@ -24,30 +56,31 @@
         </div>
     </header>
 
-    <!-- ANA İÇERİK ALANI (404 / YÖNLENDİRME) -->
+    <!-- ANA İÇERİK ALANI -->
     <main class="flex-grow max-w-3xl mx-auto px-4 py-16 w-full text-center space-y-8 flex flex-col justify-center items-center">
         
-        <div class="space-y-3">
-            <span class="text-indigo-400 font-black text-7xl md:text-8xl tracking-widest block opacity-80">404</span>
-            <h1 class="text-2xl md:text-3xl font-extrabold text-white">Aradığınız Sayfa Bulunamadı</h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-md mx-auto">Aradığınız içerik taşınmış veya silinmiş olabilir. Ancak endişelenmeyin, aklınızdakini anında arayarak keşfedebilirsiniz.</p>
+        <!-- Yükleniyor ve Otomatik Yönlendirme Durumu -->
+        <div id="yuklemeAlani" class="space-y-4 py-12">
+            <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-500 mb-2"></div>
+            <h1 id="yonlendirmeMesaji" class="text-xl md:text-2xl font-bold text-white">İçerik analiz ediliyor, yönlendiriliyorsunuz...</h1>
+            <p class="text-slate-400 text-sm">nearadin.net akıllı yönlendirme sistemi devreye girdi.</p>
         </div>
 
-        <!-- Akıllı Arama Kutusu (Doğrudan Detaylara Yönlendirir) -->
-        <form onsubmit="hataAramaYonlendir(event)" class="w-full max-w-xl flex relative shadow-2xl">
-            <input type="text" id="hataAramaGirdisi" placeholder="Ne aramak istemiştiniz?..." 
-                class="w-full bg-slate-800 border border-slate-700 rounded-l-2xl px-5 py-4 text-slate-100 focus:outline-none focus:border-indigo-500 transition text-sm md:text-base">
-            <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-8 rounded-r-2xl font-semibold transition flex items-center justify-center text-sm md:text-base shadow-lg">
-                Ara
-            </button>
-        </form>
-
-        <!-- Popüler Hızlı Yönlendirme Önerileri -->
-        <div class="pt-6 w-full max-w-xl text-left bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 shadow-lg space-y-3">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-400">Gündemden Öne Çıkan Başlıklar</h3>
-            <div id="hizliOneriler" class="flex flex-wrap gap-2 pt-1">
-                <!-- JS ile dolacak -->
+        <!-- Eğer URL'de yönlendirilecek metin yoksa çıkacak manuel arama ekranı -->
+        <div id="manuelAramaAlani" class="hidden space-y-6 w-full">
+            <div class="space-y-3">
+                <span class="text-indigo-400 font-black text-7xl md:text-8xl tracking-widest block opacity-80">404</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white">Aradığınız Sayfa Bulunamadı</h2>
+                <p class="text-slate-400 text-sm md:text-base max-w-md mx-auto">Aradığınız adres bulunamadı ama dilediğiniz kelimeyi hemen arayarak keşfetmeye başlayabilirsiniz.</p>
             </div>
+
+            <form onsubmit="manuelAramaYonlendir(event)" class="w-full max-w-xl mx-auto flex relative shadow-2xl">
+                <input type="text" id="manuelAramaGirdisi" placeholder="Ne aramak istemiştiniz?..." 
+                    class="w-full bg-slate-800 border border-slate-700 rounded-l-2xl px-5 py-4 text-slate-100 focus:outline-none focus:border-indigo-500 transition text-sm md:text-base">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-8 rounded-r-2xl font-semibold transition flex items-center justify-center text-sm md:text-base shadow-lg">
+                    Ara
+                </button>
+            </form>
         </div>
 
     </main>
@@ -57,38 +90,11 @@
         <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- JAVASCRIPT MİMARİSİ -->
+    <!-- JAVASCRIPT YARDIMCI FONKSİYON -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // Eğer kullanıcı bozuk bir linkle geldiyse ve URL'de path kalıntısı varsa yakalayabiliriz
-            const pathSegments = window.location.pathname.split('/').filter(Boolean);
-            if (pathSegments.length > 0) {
-                const sonKelime = pathSegments[pathSegments.length - 1].replace(/[-_]/g, ' ');
-                if (sonKelime && sonKelime !== '404.html') {
-                    document.getElementById('hataAramaGirdisi').value = decodeURIComponent(sonKelime);
-                }
-            }
-
-            hizliOnerileriDoldur();
-        });
-
-        function hizliOnerileriDoldur() {
-            const container = document.getElementById('hizliOneriler');
-            const trendler = [
-                "Yapay Zeka Araçları", "Python ile Veri Analizi", "React 19 Yenilikleri", 
-                "Gram Altın Piyasası", "Uzaktan Çalışma", "Siber Güvenlik"
-            ];
-            
-            container.innerHTML = trendler.map(t => `
-                <a href="/detaylar/?q=${encodeURIComponent(t)}" class="bg-slate-900 hover:bg-indigo-950 border border-slate-700/80 hover:border-indigo-500/50 text-xs px-3 py-2 rounded-xl text-slate-300 hover:text-white transition shadow-sm">
-                    ${t}
-                </a>
-            `).join('');
-        }
-
-        function hataAramaYonlendir(event) {
+        function manuelAramaYonlendir(event) {
             event.preventDefault();
-            const val = document.getElementById('hataAramaGirdisi').value.trim();
+            const val = document.getElementById('manuelAramaGirdisi').value.trim();
             if (val) {
                 window.location.href = `/detaylar/?q=${encodeURIComponent(val)}`;
             }
