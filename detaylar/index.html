@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="sayfaBaslik">Arama Sonuçları - nearadin.net</title>
-    <meta name="description" content="nearadin.net ile aradığınız sorguya ait gerçek web sonuçlarına anında ulaşın.">
+    <meta name="description" content="nearadin.net ile aradığınız sorguya ait gerçek sonuçlara anında ulaşın.">
     <meta name="robots" content="index, follow">
     <link id="canonicalUrl" rel="canonical" href="https://nearadin.net/detaylar/">
     <!-- Tailwind CSS CDN -->
@@ -18,33 +18,25 @@
             <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider flex items-center gap-1">
                 <span>nearadin</span><span class="text-white bg-indigo-600 px-2 py-0.5 rounded-lg text-lg">.net</span>
             </a>
-            <!-- Arama Formu -->
-            <form onsubmit="detayAramaYap(event)" class="flex w-full md:w-1/2 relative">
-                <input type="text" id="detayAramaGirdisi" placeholder="Başka bir arama yapın..." 
-                    class="w-full bg-slate-900 border border-slate-700 rounded-l-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 transition">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 rounded-r-xl font-semibold transition flex items-center justify-center">
-                    Ara
-                </button>
-            </form>
+            <a href="/" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-sm transition shadow text-slate-200">
+                ← Ana Sayfa
+            </a>
         </div>
     </header>
 
     <!-- ANA İÇERİK ALANI -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full space-y-8">
-        <div class="flex items-center justify-between bg-slate-800/80 p-5 rounded-2xl border border-slate-700 shadow-lg">
+        <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
                 <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">nearadin.net / arama sonuçları</span>
                 <h1 id="detayAnaBaslik" class="text-2xl md:text-3xl font-black mt-1 text-white">Arama Sonuçları</h1>
             </div>
-            <a href="/" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-xl text-sm transition shadow">
-                ← Ana Sayfa
-            </a>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Gerçek Arama Sonuçlarının Listeleneceği Alan (Google CSE Entegrasyonu) -->
+            <!-- Google CSE Resmi Arama ve Sonuç Bileşeni (Tetikleme Sorunu Olmayan Tam Entegrasyon) -->
             <article class="lg:col-span-2 bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 shadow-lg space-y-4">
-                <div class="gcse-searchresults-only"></div>
+                <div class="gcse-search"></div>
             </article>
 
             <!-- Sağ Menü / Gündemden Öne Çıkanlar -->
@@ -64,7 +56,7 @@
         <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- Google CSE Resmi Scripti (Gerçek Sonuçları Çeken Altyapı) -->
+    <!-- Google CSE Resmi Scripti -->
     <script async src="https://cse.google.com/cse.js?cx=a33464712b4234607"></script>
 
     <!-- JAVASCRIPT MİMARİSİ -->
@@ -77,17 +69,16 @@
                 const temizSorgu = decodeURIComponent(sorgu).trim();
                 document.getElementById('detayAnaBaslik').innerText = `"${temizSorgu}" Arama Sonuçları`;
                 document.getElementById('sayfaBaslik').innerText = `${temizSorgu} - nearadin.net`;
-                document.getElementById('detayAramaGirdisi').value = temizSorgu;
                 document.getElementById('canonicalUrl').setAttribute('href', `https://nearadin.net/detaylar/?q=${encodeURIComponent(temizSorgu)}`);
 
-                // Google CSE arama kutusunu otomatik tetikle
-                otomatikAramaTetikle(temizSorgu, 0);
+                // Google CSE tam bileşeni yüklendiğinde arama kutusunu doldurup tetiklemesi için güvenli döngü
+                gseAramaCalistir(temizSorgu, 0);
             }
 
             yanMenuDoldur();
         });
 
-        function otomatikAramaTetikle(sorgu, deneme) {
+        function gseAramaCalistir(sorgu, deneme) {
             const inputElement = document.querySelector('input.gsc-input');
             if (inputElement) {
                 inputElement.value = sorgu;
@@ -96,8 +87,8 @@
                 if (searchButton) {
                     searchButton.click();
                 }
-            } else if (deneme < 15) {
-                setTimeout(() => otomatikAramaTetikle(sorgu, deneme + 1), 300);
+            } else if (deneme < 20) {
+                setTimeout(() => gseAramaCalistir(sorgu, deneme + 1), 300);
             }
         }
 
@@ -113,14 +104,6 @@
                     <span class="text-indigo-500">▸</span> ${t}
                 </li>
             `).join('');
-        }
-
-        function detayAramaYap(event) {
-            event.preventDefault();
-            const val = document.getElementById('detayAramaGirdisi').value.trim();
-            if (val) {
-                window.location.href = `?q=${encodeURIComponent(val)}`;
-            }
         }
     </script>
 </body>
