@@ -8,7 +8,6 @@
     <meta name="description" content="nearadin.net ile aradığınız tüm konularda Google altyapısıyla güncel arama sonuçlarına, dinamik içeriklere ve detaylı rehberlere anında ulaşın.">
     <meta name="keywords" content="arama motoru, güncel sonuçlar, teknoloji, SEO, dinamik arama, nearadin">
     <meta name="robots" content="index, follow">
-    <!-- Canonical URL -->
     <link id="canonicalUrl" rel="canonical" href="https://nearadin.net/">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -26,10 +25,10 @@
     }
     </script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between relative">
 
     <!-- ÜST BİLGİ & MENÜ -->
-    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="#" onclick="anasayfayaDon(event)" class="text-2xl font-black text-indigo-400 tracking-wider">
                 nearadin<span class="text-white">.net</span>
@@ -50,21 +49,16 @@
         
         <!-- ANASAYFA GÖRÜNÜMÜ -->
         <div id="anaSayfaBolumu" class="space-y-12">
-            <!-- Hero Alanı -->
             <section class="text-center py-12 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border border-indigo-500/20 p-8">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Bilgiye En Hızlı ve Etkili Yol</h1>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Google Özel Arama altyapısı, kategoriler ve dinamik keşif deneyimi ile aradığınız her şey tek bir adreste.</p>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Google Özel Arama altyapısı ve kesintisiz önizleme deneyimi ile aradığınız her şey tek bir adreste.</p>
             </section>
 
-            <!-- KATEGORİLER -->
             <section>
                 <h2 class="text-2xl font-bold mb-6 text-indigo-300 border-b border-slate-800 pb-2">Popüler Kategoriler</h2>
-                <div id="kategoriListesi" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <!-- Dinamik Kategoriler -->
-                </div>
+                <div id="kategoriListesi" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
             </section>
 
-            <!-- TRENDLER VE ETKİLEŞİM WIDGETLARI -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
                     <h3 class="text-lg font-bold text-indigo-400 mb-2">Canlı Trend Akışı</h3>
@@ -94,23 +88,20 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Google Arama Sonuçlarının Görüntüleneceği Alan -->
                 <article class="lg:col-span-2 bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-4">
-                    <!-- Google CSE Resmi Div Konteyneri -->
-                    <div class="gcse-searchresults-only"></div>
+                    <div class="gcse-searchresults-only" data-webSearchResultClickCallback="aramaSonucuTiklandi"></div>
                 </article>
 
-                <!-- Yan Menü / Etkileşim Bileşenleri -->
                 <aside class="space-y-6">
                     <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
                         <h3 class="font-bold text-indigo-400 mb-3">İlgili Aramalar</h3>
                         <ul id="ilgiliAramalarListesi" class="space-y-2 text-sm text-slate-300"></ul>
                     </div>
                     <div class="bg-gradient-to-br from-indigo-900 to-slate-800 p-6 rounded-xl border border-indigo-500/30">
-                        <h3 class="font-bold text-white mb-2">Keşfe Devam Edin</h3>
-                        <p class="text-xs text-slate-300 mb-4">Arama sonuçları Google altyapısıyla anlık olarak listelenmektedir.</p>
+                        <h3 class="font-bold text-white mb-2">Kesintisiz Deneyim</h3>
+                        <p class="text-xs text-slate-300 mb-4">Arama sonuçlarından tıkladığınız sayfalar site içi önizleme modalı ile açılır.</p>
                         <div class="bg-slate-900 p-3 rounded-lg text-center text-indigo-300 font-mono text-sm">
-                            Sistem Aktif ve Uyumlu
+                            Aktif Önizleme Modu
                         </div>
                     </div>
                 </aside>
@@ -119,12 +110,37 @@
 
     </main>
 
+    <!-- SAYFADAN AYRILMADAN AÇILAN ÖNİZLEME MODALI (POPUP / DRAWER) -->
+    <div id="onizlemeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Üst Çubuğu -->
+            <div class="bg-slate-800 px-6 py-4 flex items-center justify-between border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <span class="w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></span>
+                    <span id="modalBaslik" class="text-sm font-semibold text-slate-200 truncate max-w-md">Sayfa Önizleniyor...</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a id="modalDisaridanAc" href="#" target="_blank" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg text-slate-300 transition">Yeni Sekmede Aç ↗</a>
+                    <button onclick="modalKapat()" class="bg-rose-600/80 hover:bg-rose-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold transition">✕</button>
+                </div>
+            </div>
+            <!-- İframe İçerik Alanı -->
+            <div class="flex-grow relative bg-slate-950">
+                <div id="iframeYukleniyor" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/90 z-10">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mb-2"></div>
+                    <p class="text-slate-400 text-sm">İçerik yükleniyor, lütfen bekleyin...</p>
+                </div>
+                <iframe id="onizlemeIframe" src="" class="w-full h-full border-none" onload="iframeYuklendi()"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- ALT BİLGİ -->
     <footer class="bg-slate-800 border-t border-slate-700 mt-12 py-6 text-center text-slate-500 text-sm">
         <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır. Google CSE Altyapısı ile Güçlendirilmiştir.</p>
     </footer>
 
-    <!-- Google CSE (Custom Search Engine) Resmi Scripti -->
+    <!-- Google CSE Resmi Scripti -->
     <script async src="https://cse.google.com/cse.js?cx=a33464712b4234607"></script>
 
     <!-- UYGULAMA JAVASCRIPT MİMARİSİ -->
@@ -161,6 +177,18 @@
             if (sorgu) {
                 aramaSorgusunuIsle(sorgu, false);
             }
+
+            // Google CSE sonuçlarındaki linklerin tıklanmasını yakalayıp modal içinde açma dinleyicisi
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('.gsc-result a.gs-title, .gs-webResult a.gs-title, .gsc-webResult a');
+                if (link && link.href) {
+                    // Google'ın kendi iç yönlendirme linkleri hariç dış site linklerini yakala
+                    if (!link.href.includes('javascript:void') && !link.href.includes('nearadin.net')) {
+                        e.preventDefault();
+                        modaliAc(link.href, link.innerText || "İçerik Önizlemesi");
+                    }
+                }
+            });
         });
 
         function kategorileriDoldur() {
@@ -195,7 +223,6 @@
 
         function aramaSorgusunuIsle(sorgu, historyPush = true) {
             const encodedSorgu = encodeURIComponent(sorgu);
-            const slug = sorgu.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, '-');
 
             if (historyPush) {
                 const yeniUrl = `?q=${encodedSorgu}`;
@@ -209,7 +236,6 @@
             document.getElementById('dinamikSayfaBolumu').classList.remove('hidden');
             document.getElementById('dinamikBaslik').innerText = `"${sorgu}" Google Arama Sonuçları`;
 
-            // Google CSE bileşenine arama terimini otomatik tetikletme simülasyonu
             setTimeout(() => {
                 const inputElement = document.querySelector('input.gsc-input');
                 if (inputElement) {
@@ -219,7 +245,6 @@
                 }
             }, 500);
 
-            // İlgili aramaları güncelle
             document.getElementById('ilgiliAramalarListesi').innerHTML = `
                 <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Rehberi', true)">• ${sorgu} Rehberi</li>
                 <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Nedir', true)">• ${sorgu} Nedir?</li>
@@ -234,6 +259,34 @@
             document.getElementById('anaSayfaBolumu').classList.remove('hidden');
             document.title = "nearadin.net - Akıllı Arama ve Keşif Platformu";
             document.getElementById('canonicalUrl').setAttribute('href', 'https://nearadin.net/');
+        }
+
+        // Önizleme Modalı Kontrol Fonksiyonları
+        function modaliAc(url, baslik) {
+            const modal = document.getElementById('onizlemeModal');
+            const iframe = document.getElementById('onizlemeIframe');
+            const modalBaslik = document.getElementById('modalBaslik');
+            const disaridanAc = document.getElementById('modalDisaridanAc');
+            const yukleniyor = document.getElementById('iframeYukleniyor');
+
+            modalBaslik.innerText = baslik;
+            disaridanAc.href = url;
+            yukleniyor.classList.remove('hidden');
+            
+            // İframe kaynağını ata
+            iframe.src = url;
+            modal.classList.remove('hidden');
+        }
+
+        function iframeYuklendi() {
+            document.getElementById('iframeYukleniyor').classList.add('hidden');
+        }
+
+        function modalKapat() {
+            const modal = document.getElementById('onizlemeModal');
+            const iframe = document.getElementById('onizlemeIframe');
+            modal.classList.add('hidden');
+            iframe.src = ""; // Bellek boşaltma ve arka planda çalışmasını durdurma
         }
     </script>
 </body>
