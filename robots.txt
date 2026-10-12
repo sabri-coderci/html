@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /detaylar/
+
+Sitemap: https://nearadin.net/sitemap.xml
