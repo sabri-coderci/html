@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nearadin.net - Akıllı Arama ve Keşif Platformu</title>
+    <!-- SEO Meta Etiketleri -->
+    <meta name="description" content="nearadin.net ile aradığınız tüm kategorilerde güncel, dinamik ve interaktif içeriklere anında ulaşın. Teknolojiden kariyere rehberiniz.">
+    <meta name="keywords" content="arama motoru, teknoloji, yazılım, SEO, dinamik içerik, nearadin">
+    <meta name="robots" content="index, follow">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Schema.org SEO Yapısal Verisi -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://nearadin.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nearadin.net/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- ÜST BİLGİ & MENÜ -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="#" onclick="anasayfayaDon(event)" class="text-2xl font-black text-indigo-400 tracking-wider">
+                nearadin<span class="text-white">.net</span>
+            </a>
+            <!-- ARAMA FORMU -->
+            <form id="aramaFormu" onsubmit="sorgulaVeYonlendir(event)" class="flex w-full md:w-1/2 relative">
+                <input type="text" id="aramaGirdisi" placeholder="Ne aramak istemiştiniz? (Örn: Yapay Zeka, SEO, Yazılım...)" 
+                    class="w-full bg-slate-900 border border-slate-700 rounded-l-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 transition">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 rounded-r-xl font-semibold transition flex items-center justify-center">
+                    Ara
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <!-- ANA İÇERİK ALANI -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+        
+        <!-- ANASAYFA GÖRÜNÜMÜ -->
+        <div id="anaSayfaBolumu" class="space-y-12">
+            <!-- Hero Alanı -->
+            <section class="text-center py-12 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border border-indigo-500/20 p-8">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Bilgiye En Hızlı ve Etkili Yol</h1>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Yüzlerce kategori, anlık üretilen dinamik sayfalar ve kesintisiz keşif deneyimi ile aradığınızı anında bulun.</p>
+            </section>
+
+            <!-- KATEGORİLER -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 text-indigo-300 border-b border-slate-800 pb-2">Popüler Kategoriler</h2>
+                <div id="kategoriListesi" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <!-- Dinamik Kategoriler JS ile doldurulacak -->
+                </div>
+            </section>
+
+            <!-- KULLANICIYI OYALAYICI / SÜRE TUTUCU WIDGET -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-indigo-400 mb-2">Canlı Trend Akışı</h3>
+                    <p class="text-sm text-slate-400 mb-4">Anlık olarak platformda aranan popüler anahtar kelimeler:</p>
+                    <div id="canliTrendler" class="flex flex-wrap gap-2">
+                        <!-- JS ile dolacak -->
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-indigo-400 mb-2">Günün İlginç Bilgisi</h3>
+                        <p id="gununBilgisi" class="text-slate-300 text-sm italic">Yükleniyor...</p>
+                    </div>
+                    <button onclick="yeniBilgiGetir()" class="mt-4 self-start bg-slate-700 hover:bg-slate-600 text-xs px-3 py-2 rounded-lg transition">Başka Bilgi Gör</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- DİNAMİK ARAMA / İÇERİK SAYFASI GÖRÜNÜMÜ -->
+        <div id="dinamikSayfaBolumu" class="hidden space-y-8">
+            <div class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <div>
+                    <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Dinamik Oluşturulan Sayfa</span>
+                    <h1 id="dinamikBaslik" class="text-3xl font-black mt-1"></h1>
+                </div>
+                <button onclick="anasayfayaDon(event)" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition">
+                    ← Geri Dön
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Ana Metin ve SEO Optimizasyon Alanı -->
+                <article class="lg:col-span-2 bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-4">
+                    <div id="dinamikIcerikMetni" class="text-slate-300 leading-relaxed space-y-4">
+                        <!-- JS tarafından üretilen özgün metinler -->
+                    </div>
+                </article>
+
+                <!-- Yan Menü / Etkileşim Bileşenleri (Sitede Kalma Süresini Artırır) -->
+                <aside class="space-y-6">
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                        <h3 class="font-bold text-indigo-400 mb-3">İlgili Diğer Aramalar</h3>
+                        <ul id="ilgiliAramalarListesi" class="space-y-2 text-sm text-slate-300">
+                            <!-- JS dolumu -->
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo-900 to-slate-800 p-6 rounded-xl border border-indigo-500/30">
+                        <h3 class="font-bold text-white mb-2">Bunu da İnceleyin</h3>
+                        <p class="text-xs text-slate-300 mb-4">Bu sorguyla ilgilenen kullanıcılar aşağıdaki interaktif simülasyona da göz attı.</p>
+                        <div id="interaktifMiniWidget" class="bg-slate-900 p-3 rounded-lg text-center text-indigo-300 font-mono text-sm">
+                            Etkileşim Bekleniyor...
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ALT BİLGİ -->
+    <footer class="bg-slate-800 border-t border-slate-700 mt-12 py-6 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır. Dinamik SEO Altyapısı ile Güçlendirilmiştir.</p>
+    </footer>
+
+    <!-- JAVASCRIPT MİMARİSİ -->
+    <script>
+        // En büyük web sitelerinin kategorileri
+        const kategoriler = [
+            { ad: "Teknoloji", ikon: "💻", slug: "teknoloji" },
+            { ad: "Yazılım & Kod", ikon: "⚡", slug: "yazilim" },
+            { ad: "Yapay Zeka", ikon: "🤖", slug: "yapay-zeka" },
+            { ad: "Kariyer & İş", ikon: "📈", slug: "kariyer" },
+            { ad: "Bilim", ikon: "🔬", slug: "bilim" },
+            { ad: "Sağlık & Yaşam", ikon: "🌿", slug: "saglik" },
+            { ad: "Eğitim", ikon: "📚", slug: "egitim" },
+            { ad: "Finans & Ekonomi", ikon: "💰", slug: "finans" },
+            { ad: "Oyun & Eğlence", ikon: "🎮", slug: "oyun" },
+            { ad: "Otomotiv", ikon: "🚗", slug: "otomotiv" },
+            { ad: "Seyahat", ikon: "✈️", slug: "seyahat" },
+            { ad: "Tasarım", ikon: "🎨", slug: "tasarım" }
+        ];
+
+        const ilgincBilgiler = [
+            "İnternet üzerindeki tüm verilerin %90'ı son birkaç yılda üretilmiştir.",
+            "İlk web sitesi 6 Ağustos 1991'de Tim Berners-Lee tarafından yayınlanmıştır.",
+            "Google kelimesi, matematiksel bir terim olan ve 1'in yanına 100 sıfır konularak yazılan 'Googol' kelimesinden gelir.",
+            "JavaScript dili sadece 10 günde tasarlanmıştır."
+        ];
+
+        // Sayfa Yüklendiğinde Çalışacak Fonksiyonlar
+        window.addEventListener('DOMContentLoaded', () => {
+            kategorileriDoldur();
+            trendleriDoldur();
+            yeniBilgiGetir();
+
+            // URL Parametre Kontrolü (SEO / Yönlendirme simülasyonu)
+            const params = new URLSearchParams(window.location.search);
+            const sorgu = params.get('q');
+            if (sorgu) {
+                aramaSorgusunuIsle(sorgu, false);
+            }
+        });
+
+        function kategorileriDoldur() {
+            const listeDiv = document.getElementById('kategoriListesi');
+            listeDiv.innerHTML = kategoriler.map(kat => `
+                <div onclick="aramaSorgusunuIsle('${kat.ad}', true)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-4 rounded-xl cursor-pointer transition text-center group">
+                    <div class="text-3xl mb-2 group-hover:scale-110 transition">${kat.ikon}</div>
+                    <div class="text-sm font-medium text-slate-200">${kat.ad}</div>
+                </div>
+            `).join('');
+        }
+
+        function trendleriDoldur() {
+            const trendler = ["Yapay Zeka Araçları", "React 19 Yenilikleri", "SEO Uyumlu Makale", "Python ile Veri Analizi", "Uzaktan Çalışma Trendleri"];
+            document.getElementById('canliTrendler').innerHTML = trendler.map(t => `
+                <span onclick="aramaSorgusunuIsle('${t}', true)" class="bg-slate-700 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded-full cursor-pointer transition">${t}</span>
+            `).join('');
+        }
+
+        function yeniBilgiGetir() {
+            const rastgele = ilgincBilgiler[Math.floor(Math.random() * ilgincBilgiler.length)];
+            document.getElementById('gununBilgisi').innerText = rastgele;
+        }
+
+        // Arama Formu İşleyicisi
+        function sorgulaVeYonlendir(event) {
+            event.preventDefault();
+            const girdi = document.getElementById('aramaGirdisi').value.trim();
+            if (girdi) {
+                aramaSorgusunuIsle(girdi, true);
+            }
+        }
+
+        // Ana Arama ve Dinamik Sayfa Üretim Mantığı
+        function aramaSorgusunuIsle(sorgu, historyPush = true) {
+            // URL slug dönüşümü
+            const slug = sorgu.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, '-');
+            
+            if (historyPush) {
+                const yeniUrl = `?q=${encodeURIComponent(sorgu)}`;
+                window.history.pushState({ sorgu }, '', yeniUrl);
+            }
+
+            // Arama Hafızası / Cache Kontrolü (LocalStorage)
+            let cacheEdilenSayfalar = JSON.parse(localStorage.getItem('nearadin_cache') || '{}');
+
+            document.getElementById('anaSayfaBolumu').classList.add('hidden');
+            document.getElementById('dinamikSayfaBolumu').classList.remove('hidden');
+            document.getElementById('dinamikBaslik').innerText = `"${sorgu}" Hakkında Kapsamlı Rehber ve Sonuçlar`;
+
+            // SEO Başlık ve Meta Güncelleme
+            document.title = `${sorgu} - nearadin.net`;
+
+            let icerikHTML = "";
+            if (cacheEdilenSayfalar[slug]) {
+                // Daha önce oluşturulmuş sayfayı cache'ten hızlıca getir
+                icerikHTML = cacheEdilenSayfalar[slug];
+            } else {
+                // İlk kez yapılıyorsa SEO uyumlu özgün dinamik metin üret
+                icerikHTML = `
+                    <p class="text-lg font-medium text-indigo-300"><strong>${sorgu}</strong>, günümüz dijital dünyasında ve arama trendlerinde en çok merak edilen konuların başında gelmektedir. nearadin.net altyapısı ile bu konuda aradığınız tüm detayları derledik.</p>
+                    <h3 class="text-xl font-bold text-white mt-4">${sorgu} Nedir ve Neden Önemlidir?</h3>
+                    <p>Teknolojinin ve bilgi akışının hızlandığı bu dönemde <strong>${sorgu}</strong> ile ilgili doğru kaynağa ulaşmak kritik bir öneme sahiptir. Kullanıcılarımızın bu süreçte en güncel verilere erişebilmesi için sistemimiz anlık analizler sunar.</p>
+                    <h3 class="text-xl font-bold text-white mt-4">En Çok Merak Edilen Detaylar</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                        <li>${sorgu} alanında en güncel pratikler ve ipuçları.</li>
+                        <li>Sektördeki güncel gelişmeler ve geleceğe yönelik öngörüler.</li>
+                        <li>En sık karşılaşılan hatalar ve bunlardan kaçınma yöntemleri.</li>
+                    </ul>
+                `;
+                // Cache'e kaydet (Aynı sorgu tekrar yapıldığında anında açılacak)
+                cacheEdilenSayfalar[slug] = icerikHTML;
+                localStorage.setItem('nearadin_cache', JSON.stringify(cacheEdilenSayfalar));
+            }
+
+            document.getElementById('dinamikIcerikMetni').innerHTML = icerikHTML;
+
+            // Yan menü ilgili aramalar
+            document.getElementById('ilgiliAramalarListesi').innerHTML = `
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Rehberi', true)">• ${sorgu} Rehberi ve İpuçları</li>
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Fiyatları ve Modelleri', true)">• ${sorgu} Detaylı İnceleme</li>
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('En İyi ${sorgu}', true)">• En İyi ${sorgu} Seçenekleri</li>
+            `;
+
+            // Kullanıcıyı sitede tutacak interaktif widget simülasyonu
+            let sayac = 10;
+            const widget = document.getElementById('interaktifMiniWidget');
+            const interval = setInterval(() => {
+                if(sayac > 0) {
+                    widget.innerText = `Özel Analiz Yükleniyor... (${sayac}sn)`;
+                    sayac--;
+                } else {
+                    widget.innerText = `✓ ${sorgu} için analiz tamamlandı! Sitede kalmaya devam edin.`;
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+
+        function anasayfayaDon(event) {
+            event.preventDefault();
+            window.history.pushState({}, '', window.location.pathname);
+            document.getElementById('dinamikSayfaBolumu').classList.add('hidden');
+            document.getElementById('anaSayfaBolumu').classList.remove('hidden');
+            document.title = "nearadin.net - Akıllı Arama ve Keşif Platformu";
+        }
+    </script>
+</body>
+</html>
 
