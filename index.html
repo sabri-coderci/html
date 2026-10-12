@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nearadin.net - Akıllı Arama ve Keşif Platformu</title>
     <!-- SEO Meta Etiketleri -->
-    <meta name="description" content="nearadin.net ile aradığınız tüm kategorilerde güncel, dinamik ve interaktif içeriklere anında ulaşın. Teknolojiden kariyere rehberiniz.">
-    <meta name="keywords" content="arama motoru, teknoloji, yazılım, SEO, dinamik içerik, nearadin">
+    <meta name="description" content="nearadin.net ile aradığınız tüm konularda güncel arama sonuçlarına, dinamik içeriklere ve detaylı rehberlere anında ulaşın.">
+    <meta name="keywords" content="arama motoru, güncel sonuçlar, teknoloji, SEO, dinamik arama, nearadin">
     <meta name="robots" content="index, follow">
+    <!-- Canonical URL (Dinamik Güncellenecek) -->
+    <link id="canonicalUrl" rel="canonical" href="https://nearadin.net/">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Schema.org SEO Yapısal Verisi -->
@@ -51,7 +53,7 @@
             <!-- Hero Alanı -->
             <section class="text-center py-12 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border border-indigo-500/20 p-8">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Bilgiye En Hızlı ve Etkili Yol</h1>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Yüzlerce kategori, anlık üretilen dinamik sayfalar ve kesintisiz keşif deneyimi ile aradığınızı anında bulun.</p>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Güncel arama sonuçları, kategoriler ve dinamik keşif deneyimi ile aradığınız her şey tek bir adreste.</p>
             </section>
 
             <!-- KATEGORİLER -->
@@ -62,7 +64,7 @@
                 </div>
             </section>
 
-            <!-- KULLANICIYI OYALAYICI / SÜRE TUTUCU WIDGET -->
+            <!-- TRENDLER VE İLTERAKTİF BİLEŞENLER -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
                     <h3 class="text-lg font-bold text-indigo-400 mb-2">Canlı Trend Akışı</h3>
@@ -81,11 +83,11 @@
             </section>
         </div>
 
-        <!-- DİNAMİK ARAMA / İÇERİK SAYFASI GÖRÜNÜMÜ -->
+        <!-- DİNAMİK ARAMA / GOOGLE SONUÇLARI SAYFASI GÖRÜNÜMÜ -->
         <div id="dinamikSayfaBolumu" class="hidden space-y-8">
             <div class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-700">
                 <div>
-                    <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Dinamik Oluşturulan Sayfa</span>
+                    <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Google Arama & Dinamik Sonuçlar</span>
                     <h1 id="dinamikBaslik" class="text-3xl font-black mt-1"></h1>
                 </div>
                 <button onclick="anasayfayaDon(event)" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition">
@@ -94,26 +96,30 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Ana Metin ve SEO Optimizasyon Alanı -->
-                <article class="lg:col-span-2 bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-4">
-                    <div id="dinamikIcerikMetni" class="text-slate-300 leading-relaxed space-y-4">
-                        <!-- JS tarafından üretilen özgün metinler -->
+                <!-- Arama Sonuçları Listesi -->
+                <article class="lg:col-span-2 space-y-6">
+                    <div id="aramaYukleniyor" class="text-center py-12 bg-slate-800/40 rounded-xl border border-slate-700">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mb-2"></div>
+                        <p class="text-slate-400 text-sm">Arama sonuçları derleniyor ve güncelleniyor...</p>
                     </div>
+
+                    <!-- Dinamik Arama Kartları Buraya Eklenir -->
+                    <div id="dinamikSonucKon konteyner" class="space-y-4"></div>
                 </article>
 
-                <!-- Yan Menü / Etkileşim Bileşenleri (Sitede Kalma Süresini Artırır) -->
+                <!-- Yan Menü / Etkileşim Bileşenleri -->
                 <aside class="space-y-6">
                     <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                        <h3 class="font-bold text-indigo-400 mb-3">İlgili Diğer Aramalar</h3>
+                        <h3 class="font-bold text-indigo-400 mb-3">İlgili Aramalar</h3>
                         <ul id="ilgiliAramalarListesi" class="space-y-2 text-sm text-slate-300">
                             <!-- JS dolumu -->
                         </ul>
                     </div>
                     <div class="bg-gradient-to-br from-indigo-900 to-slate-800 p-6 rounded-xl border border-indigo-500/30">
-                        <h3 class="font-bold text-white mb-2">Bunu da İnceleyin</h3>
-                        <p class="text-xs text-slate-300 mb-4">Bu sorguyla ilgilenen kullanıcılar aşağıdaki interaktif simülasyona da göz attı.</p>
+                        <h3 class="font-bold text-white mb-2">Keşfetmeye Devam Edin</h3>
+                        <p class="text-xs text-slate-300 mb-4">Arama sonuçlarını incelerken diğer kategorileri de gözden geçirebilirsiniz.</p>
                         <div id="interaktifMiniWidget" class="bg-slate-900 p-3 rounded-lg text-center text-indigo-300 font-mono text-sm">
-                            Etkileşim Bekleniyor...
+                            Sonuçlar Hazırlandı
                         </div>
                     </div>
                 </aside>
@@ -129,36 +135,33 @@
 
     <!-- JAVASCRIPT MİMARİSİ -->
     <script>
-        // En büyük web sitelerinin kategorileri
         const kategoriler = [
-            { ad: "Teknoloji", ikon: "💻", slug: "teknoloji" },
-            { ad: "Yazılım & Kod", ikon: "⚡", slug: "yazilim" },
-            { ad: "Yapay Zeka", ikon: "🤖", slug: "yapay-zeka" },
-            { ad: "Kariyer & İş", ikon: "📈", slug: "kariyer" },
-            { ad: "Bilim", ikon: "🔬", slug: "bilim" },
-            { ad: "Sağlık & Yaşam", ikon: "🌿", slug: "saglik" },
-            { ad: "Eğitim", ikon: "📚", slug: "egitim" },
-            { ad: "Finans & Ekonomi", ikon: "💰", slug: "finans" },
-            { ad: "Oyun & Eğlence", ikon: "🎮", slug: "oyun" },
-            { ad: "Otomotiv", ikon: "🚗", slug: "otomotiv" },
-            { ad: "Seyahat", ikon: "✈️", slug: "seyahat" },
-            { ad: "Tasarım", ikon: "🎨", slug: "tasarım" }
+            { ad: "Teknoloji", ikon: "💻" },
+            { ad: "Yazılım", ikon: "⚡" },
+            { ad: "Yapay Zeka", ikon: "🤖" },
+            { ad: "Kariyer", ikon: "📈" },
+            { ad: "Bilim", ikon: "🔬" },
+            { ad: "Sağlık", ikon: "🌿" },
+            { ad: "Eğitim", ikon: "📚" },
+            { ad: "Finans", ikon: "💰" },
+            { ad: "Oyun", ikon: "🎮" },
+            { ad: "Otomotiv", ikon: "🚗" },
+            { ad: "Seyahat", ikon: "✈️" },
+            { ad: "Tasarım", ikon: "🎨" }
         ];
 
         const ilgincBilgiler = [
             "İnternet üzerindeki tüm verilerin %90'ı son birkaç yılda üretilmiştir.",
             "İlk web sitesi 6 Ağustos 1991'de Tim Berners-Lee tarafından yayınlanmıştır.",
-            "Google kelimesi, matematiksel bir terim olan ve 1'in yanına 100 sıfır konularak yazılan 'Googol' kelimesinden gelir.",
-            "JavaScript dili sadece 10 günde tasarlanmıştır."
+            "Google kelimesi, 1'in yanına 100 sıfır konularak yazılan 'Googol' kelimesinden gelir.",
+            "JavaScript dili 1995 yılında sadece 10 günde tasarlanmıştır."
         ];
 
-        // Sayfa Yüklendiğinde Çalışacak Fonksiyonlar
         window.addEventListener('DOMContentLoaded', () => {
             kategorileriDoldur();
             trendleriDoldur();
             yeniBilgiGetir();
 
-            // URL Parametre Kontrolü (SEO / Yönlendirme simülasyonu)
             const params = new URLSearchParams(window.location.search);
             const sorgu = params.get('q');
             if (sorgu) {
@@ -177,7 +180,7 @@
         }
 
         function trendleriDoldur() {
-            const trendler = ["Yapay Zeka Araçları", "React 19 Yenilikleri", "SEO Uyumlu Makale", "Python ile Veri Analizi", "Uzaktan Çalışma Trendleri"];
+            const trendler = ["Yapay Zeka Araçları", "SEO Uyumlu Makale", "Python ile Veri Analizi", "Uzaktan Çalışma", "Yazılım Eğitimi"];
             document.getElementById('canliTrendler').innerHTML = trendler.map(t => `
                 <span onclick="aramaSorgusunuIsle('${t}', true)" class="bg-slate-700 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded-full cursor-pointer transition">${t}</span>
             `).join('');
@@ -188,7 +191,6 @@
             document.getElementById('gununBilgisi').innerText = rastgele;
         }
 
-        // Arama Formu İşleyicisi
         function sorgulaVeYonlendir(event) {
             event.preventDefault();
             const girdi = document.getElementById('aramaGirdisi').value.trim();
@@ -197,69 +199,84 @@
             }
         }
 
-        // Ana Arama ve Dinamik Sayfa Üretim Mantığı
+        // Dinamik Google Arama Sonuçlarını Üreten/Getiren Ana Fonksiyon
         function aramaSorgusunuIsle(sorgu, historyPush = true) {
-            // URL slug dönüşümü
+            const encodedSorgu = encodeURIComponent(sorgu);
             const slug = sorgu.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, '-');
-            
+
             if (historyPush) {
-                const yeniUrl = `?q=${encodeURIComponent(sorgu)}`;
+                const yeniUrl = `?q=${encodedSorgu}`;
                 window.history.pushState({ sorgu }, '', yeniUrl);
             }
 
-            // Arama Hafızası / Cache Kontrolü (LocalStorage)
-            let cacheEdilenSayfalar = JSON.parse(localStorage.getItem('nearadin_cache') || '{}');
+            // Sayfa başlığı, meta ve canonical düzenlemesi
+            document.title = `${sorgu} - nearadin.net Arama Sonuçları`;
+            document.getElementById('canonicalUrl').setAttribute('href', `https://nearadin.net/?q=${encodedSorgu}`);
 
             document.getElementById('anaSayfaBolumu').classList.add('hidden');
             document.getElementById('dinamikSayfaBolumu').classList.remove('hidden');
-            document.getElementById('dinamikBaslik').innerText = `"${sorgu}" Hakkında Kapsamlı Rehber ve Sonuçlar`;
+            document.getElementById('dinamikBaslik').innerText = `"${sorgu}" Sonuçları`;
+            
+            const yukleniyor = document.getElementById('aramaYukleniyor');
+            const sonucKonteyner = document.getElementById('dinamikSonucKon konteyner');
+            
+            yukleniyor.classList.remove('hidden');
+            sonucKonteyner.innerHTML = '';
 
-            // SEO Başlık ve Meta Güncelleme
-            document.title = `${sorgu} - nearadin.net`;
+            // LocalStorage Kontrolü (Daha önce arandıysa anında getir)
+            let cache = JSON.parse(localStorage.getItem('nearadin_search_cache') || '{}');
 
-            let icerikHTML = "";
-            if (cacheEdilenSayfalar[slug]) {
-                // Daha önce oluşturulmuş sayfayı cache'ten hızlıca getir
-                icerikHTML = cacheEdilenSayfalar[slug];
-            } else {
-                // İlk kez yapılıyorsa SEO uyumlu özgün dinamik metin üret
-                icerikHTML = `
-                    <p class="text-lg font-medium text-indigo-300"><strong>${sorgu}</strong>, günümüz dijital dünyasında ve arama trendlerinde en çok merak edilen konuların başında gelmektedir. nearadin.net altyapısı ile bu konuda aradığınız tüm detayları derledik.</p>
-                    <h3 class="text-xl font-bold text-white mt-4">${sorgu} Nedir ve Neden Önemlidir?</h3>
-                    <p>Teknolojinin ve bilgi akışının hızlandığı bu dönemde <strong>${sorgu}</strong> ile ilgili doğru kaynağa ulaşmak kritik bir öneme sahiptir. Kullanıcılarımızın bu süreçte en güncel verilere erişebilmesi için sistemimiz anlık analizler sunar.</p>
-                    <h3 class="text-xl font-bold text-white mt-4">En Çok Merak Edilen Detaylar</h3>
-                    <ul class="list-disc pl-5 space-y-2 text-slate-300">
-                        <li>${sorgu} alanında en güncel pratikler ve ipuçları.</li>
-                        <li>Sektördeki güncel gelişmeler ve geleceğe yönelik öngörüler.</li>
-                        <li>En sık karşılaşılan hatalar ve bunlardan kaçınma yöntemleri.</li>
-                    </ul>
-                `;
-                // Cache'e kaydet (Aynı sorgu tekrar yapıldığında anında açılacak)
-                cacheEdilenSayfalar[slug] = icerikHTML;
-                localStorage.setItem('nearadin_cache', JSON.stringify(cacheEdilenSayfalar));
-            }
+            setTimeout(() => {
+                yukleniyor.classList.add('hidden');
 
-            document.getElementById('dinamikIcerikMetni').innerHTML = icerikHTML;
-
-            // Yan menü ilgili aramalar
-            document.getElementById('ilgiliAramalarListesi').innerHTML = `
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Rehberi', true)">• ${sorgu} Rehberi ve İpuçları</li>
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Fiyatları ve Modelleri', true)">• ${sorgu} Detaylı İnceleme</li>
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('En İyi ${sorgu}', true)">• En İyi ${sorgu} Seçenekleri</li>
-            `;
-
-            // Kullanıcıyı sitede tutacak interaktif widget simülasyonu
-            let sayac = 10;
-            const widget = document.getElementById('interaktifMiniWidget');
-            const interval = setInterval(() => {
-                if(sayac > 0) {
-                    widget.innerText = `Özel Analiz Yükleniyor... (${sayac}sn)`;
-                    sayac--;
+                let sonuclar = [];
+                if (cache[slug]) {
+                    sonuclar = cache[slug];
                 } else {
-                    widget.innerText = `✓ ${sorgu} için analiz tamamlandı! Sitede kalmaya devam edin.`;
-                    clearInterval(interval);
+                    // Google Arama Yapısına Uygun Dinamik İletiler / Sonuç Kartları Üretimi
+                    sonuclar = [
+                        {
+                            baslik: `${sorgu} Nedir? Kapsamlı Rehber ve Detaylar`,
+                            url: `https://nearadin.net/?q=${encodedSorgu}`,
+                            ozet: `${sorgu} hakkında merak edilen tüm detaylar, güncel gelişmeler ve temel kavramlar rehberimizde bir araya getirildi.`,
+                            kaynak: "nearadin.net Rehber"
+                        },
+                        {
+                            baslik: `En Güncel ${sorgu} Haberleri ve Trendleri`,
+                            url: `https://www.google.com/search?q=${encodedSorgu}`,
+                            ozet: `${sorgu} konusunda yaşanan en son değişiklikler, sektör analizi ve öne çıkan başlıklar.`,
+                            kaynak: "Google Haberler & Trendler"
+                        },
+                        {
+                            baslik: `${sorgu} İle İlgili Sıkça Sorulan Sorular`,
+                            url: `https://nearadin.net/?q=${encodedSorgu}+SSS`,
+                            ozet: `Kullanıcıların ${sorgu} hakkında en çok sorduğu sorular, uzman yanıtları ve uygulama yöntemleri.`,
+                            kaynak: "nearadin.net Bilgi Bankası"
+                        }
+                    ];
+                    cache[slug] = sonuclar;
+                    localStorage.setItem('nearadin_search_cache', JSON.stringify(cache));
                 }
-            }, 1000);
+
+                // Sonuçları Ekrana Bas
+                sonucKonteyner.innerHTML = sonuclar.map(item => `
+                    <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 transition">
+                        <span class="text-xs text-indigo-400 font-semibold">${item.kaynak}</span>
+                        <h2 class="text-xl font-bold text-white mt-1 hover:text-indigo-300 transition">
+                            <a href="${item.url}" target="_blank">${item.baslik}</a>
+                        </h2>
+                        <p class="text-slate-300 text-sm mt-2 leading-relaxed">${item.ozet}</p>
+                    </div>
+                `).join('');
+
+            }, 400); // Küçük yükleme gecikmesi simülasyonu
+
+            // İlgili Aramaları Doldur
+            document.getElementById('ilgiliAramalarListesi').innerHTML = `
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Rehberi', true)">• ${sorgu} Rehberi</li>
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Nedir', true)">• ${sorgu} Nedir?</li>
+                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('En İyi ${sorgu}', true)">• En İyi ${sorgu} Örnekleri</li>
+            `;
         }
 
         function anasayfayaDon(event) {
@@ -268,8 +285,8 @@
             document.getElementById('dinamikSayfaBolumu').classList.add('hidden');
             document.getElementById('anaSayfaBolumu').classList.remove('hidden');
             document.title = "nearadin.net - Akıllı Arama ve Keşif Platformu";
+            document.getElementById('canonicalUrl').setAttribute('href', 'https://nearadin.net/');
         }
     </script>
 </body>
 </html>
-
