@@ -1,84 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Ana Sayfa -->
-    <url>
-        <loc>https://nearadin.net/</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>always</changefreq>
-        <priority>1.0</priority>
-    </url>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // nearadin.net Sürekli Güncellenen Dinamik Trend Havuzu
+        const dinamikTrendler = [
+            "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım",
+            "React 19 Yenilikleri", "Gram Altın Piyasası", "Uzaktan Çalışma Trendleri",
+            "Girişimcilik ve Yazılım", "BIST 100 Analizleri", "Siber Güvenlik Rehberi",
+            "Mobil Uygulama Geliştirme", "Bulut Bilişim Sistemleri", "Dijital Pazarlama Stratejileri",
+            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri"
+        ];
 
-    <!-- Statik / Popüler Kategori Sayfaları -->
-    <url>
-        <loc>https://nearadin.net/?q=Teknoloji</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Yaz%C4%B1l%C4%B1m</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Yapay+Zeka</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Kariyer</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Bilim</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Sa%C4%9Fl%C4%B1k</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=E%C4%9Fitim</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Finans</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Oyun</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Otomotiv</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Seyahat</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://nearadin.net/?q=Tasar%C4%B1m</loc>
-        <lastmod>2026-10-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-</urlset>
+        window.addEventListener('DOMContentLoaded', () => {
+            const bugun = new Date().toISOString().split('T')[0];
+            const baseUrl = "https://nearadin.net/detaylar/?q=";
+
+            let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+            xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+            // Ana Sayfa
+            xml += `  <url>\n`;
+            xml += `    <loc>https://nearadin.net/</loc>\n`;
+            xml += `    <lastmod>${bugun}</lastmod>\n`;
+            xml += `    <changefreq>always</changefreq>\n`;
+            xml += `    <priority>1.0</priority>\n`;
+            xml += `  </url>\n`;
+
+            // Dinamik Trend Aramaları
+            dinamikTrendler.forEach(trend => {
+                xml += `  <url>\n`;
+                xml += `    <loc>${baseUrl}${encodeURIComponent(trend)}</loc>\n`;
+                xml += `    <lastmod>${bugun}</lastmod>\n`;
+                xml += `    <changefreq>hourly</changefreq>\n`;
+                xml += `    <priority>0.8</priority>\n`;
+            });
+
+            xml += `</urlset>`;
+
+            // Sayfanın içeriğini doğrudan XML olarak tarayıcıya ve Googlebot'a ver
+            document.open();
+            document.write('<pre style="word-wrap: break-word; white-space: pre-wrap;">' + 
+                xml.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + 
+                '</pre>');
+            document.close();
+            document.contentType = "application/xml";
+        });
+    </script>
+</head>
+<body></body>
+</html>
