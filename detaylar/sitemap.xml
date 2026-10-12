@@ -1,54 +1,69 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>nearadin.net Dinamik Sitemap</title>
-</head>
-<body>
-    <pre id="sitemapContent"></pre>
-
-    <script>
-        // nearadin.net Anlık Trend Havuzu (Her dakika güncellenen başlıklar)
-        const gundemTrendleri = [
-            "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım",
-            "React 19 Yenilikleri", "Gram Altın Piyasası", "Uzaktan Çalışma Trendleri",
-            "Girişimcilik ve Yazılım", "BIST 100 Analizleri", "Siber Güvenlik Rehberi",
-            "Mobil Uygulama Geliştirme", "Bulut Bilişim Sistemleri", "Dijital Pazarlama Stratejileri",
-            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri"
-        ];
-
-        function sitemapUret() {
-            const bugun = new Date().toISOString().split('T')[0];
-            const baseUrl = "https://nearadin.net/detaylar/?q=";
-
-            let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-            xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
-            // Ana Sayfa
-            xml += `  <url>\n`;
-            xml += `    <loc>https://nearadin.net/</loc>\n`;
-            xml += `    <lastmod>${bugun}</lastmod>\n`;
-            xml += `    <changefreq>always</changefreq>\n`;
-            xml += `    <priority>1.0</priority>\n`;
-            xml += `  </url>\n`;
-
-            // Anlık Trend Aramaları
-            gundemTrendleri.forEach(trend => {
-                const encoded = encodeURIComponent(trend);
-                xml += `  <url>\n`;
-                xml += `    <loc>${baseUrl}${encoded}</loc>\n`;
-                xml += `    <lastmod>${bugun}</lastmod>\n`;
-                xml += `    <changefreq>hourly</changefreq>\n`;
-                xml += `    <priority>0.8</priority>\n`;
-                xml += `  </url>\n`;
-            });
-
-            xml += `</urlset>`;
-
-            document.getElementById('sitemapContent').textContent = xml;
-        }
-
-        window.onload = sitemapUret;
-    </script>
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://nearadin.net/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Yapay%20Zeka%20Ara%C3%A7lar%C4%B1</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Python%20ile%20Veri%20Analizi</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=SEO%20Uyumlu%20Web%20Tasar%C4%B1m</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=React%2019%20Yenilikleri</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Gram%20Alt%C4%B1n%20Piyasas%C4%B1</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Uzaktan%20%C3%87al%C4%B1%C5%9Fma%20Trendleri</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Giri%C5%9Fimcilik%20ve%20Yaz%C4%B1l%C4%B1m</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=BIST%20100%20Analizleri</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Siber%20G%C3%BCvenlik%20Rehberi</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nearadin.net/detaylar/?q=Mobil%20Uygulama%20Geli%C5%9Ftirme</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
