@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>nearadin.net Dinamik Sitemap</title>
+</head>
+<body>
+    <pre id="sitemapContent"></pre>
+
+    <script>
+        // nearadin.net Anlık Trend Havuzu (Her dakika güncellenen başlıklar)
+        const gundemTrendleri = [
+            "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Web Tasarım",
+            "React 19 Yenilikleri", "Gram Altın Piyasası", "Uzaktan Çalışma Trendleri",
+            "Girişimcilik ve Yazılım", "BIST 100 Analizleri", "Siber Güvenlik Rehberi",
+            "Mobil Uygulama Geliştirme", "Bulut Bilişim Sistemleri", "Dijital Pazarlama Stratejileri",
+            "Kripto Para Gelişmeleri", "Modern Yazılım Mimarileri", "Elektrikli Araç Teknolojileri"
+        ];
+
+        function sitemapUret() {
+            const bugun = new Date().toISOString().split('T')[0];
+            const baseUrl = "https://nearadin.net/detaylar/?q=";
+
+            let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+            xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+            // Ana Sayfa
+            xml += `  <url>\n`;
+            xml += `    <loc>https://nearadin.net/</loc>\n`;
+            xml += `    <lastmod>${bugun}</lastmod>\n`;
+            xml += `    <changefreq>always</changefreq>\n`;
+            xml += `    <priority>1.0</priority>\n`;
+            xml += `  </url>\n`;
+
+            // Anlık Trend Aramaları
+            gundemTrendleri.forEach(trend => {
+                const encoded = encodeURIComponent(trend);
+                xml += `  <url>\n`;
+                xml += `    <loc>${baseUrl}${encoded}</loc>\n`;
+                xml += `    <lastmod>${bugun}</lastmod>\n`;
+                xml += `    <changefreq>hourly</changefreq>\n`;
+                xml += `    <priority>0.8</priority>\n`;
+                xml += `  </url>\n`;
+            });
+
+            xml += `</urlset>`;
+
+            document.getElementById('sitemapContent').textContent = xml;
+        }
+
+        window.onload = sitemapUret;
+    </script>
+</body>
+</html>
