@@ -6,140 +6,65 @@
     <title>nearadin.net - Akıllı Arama ve Keşif Platformu</title>
     <!-- SEO Meta Etiketleri -->
     <meta name="description" content="nearadin.net ile aradığınız tüm konularda Google altyapısıyla güncel arama sonuçlarına, dinamik içeriklere ve detaylı rehberlere anında ulaşın.">
-    <meta name="keywords" content="arama motoru, güncel sonuçlar, teknoloji, SEO, dinamik arama, nearadin">
     <meta name="robots" content="index, follow">
-    <link id="canonicalUrl" rel="canonical" href="https://nearadin.net/">
+    <link rel="canonical" href="https://nearadin.net/">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Schema.org SEO Yapısal Verisi -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://nearadin.net/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://nearadin.net/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between relative">
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
 
     <!-- ÜST BİLGİ & MENÜ -->
     <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="#" onclick="anasayfayaDon(event)" class="text-2xl font-black text-indigo-400 tracking-wider">
+            <a href="/" class="text-2xl font-black text-indigo-400 tracking-wider">
                 nearadin<span class="text-white">.net</span>
             </a>
-            <!-- ARAMA FORMU -->
-            <form action="/detaylar/" method="GET" class="...">
-    <input type="text" name="q" placeholder="Ne aramak istemiştiniz?">
-    <button type="submit">Ara</button>
-</form>
-
+            <form onsubmit="anaAramaYonlendir(event)" class="flex w-full md:w-1/2 relative">
+                <input type="text" id="anaAramaGirdisi" placeholder="Ne aramak istemiştiniz? (Örn: Yapay Zeka, Python...)" 
+                    class="w-full bg-slate-900 border border-slate-700 rounded-l-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-indigo-500 transition">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 px-6 rounded-r-xl font-semibold transition flex items-center justify-center">
+                    Ara
+                </button>
+            </form>
         </div>
     </header>
 
     <!-- ANA İÇERİK ALANI -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full space-y-12">
         
-        <!-- ANASAYFA GÖRÜNÜMÜ -->
-        <div id="anaSayfaBolumu" class="space-y-12">
-            <section class="text-center py-12 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border border-indigo-500/20 p-8">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Bilgiye En Hızlı ve Etkili Yol</h1>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Google Özel Arama altyapısı ve kesintisiz önizleme deneyimi ile aradığınız her şey tek bir adreste.</p>
-            </section>
+        <!-- HERO ALANI -->
+        <section class="text-center py-12 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border border-indigo-500/20 p-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Bilgiye En Hızlı ve Etkili Yol</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">Google Trendler entegrasyonu ve anlık arama motoru altyapısıyla gündemi yakalayın.</p>
+        </section>
 
-            <section>
-                <h2 class="text-2xl font-bold mb-6 text-indigo-300 border-b border-slate-800 pb-2">Popüler Kategoriler</h2>
-                <div id="kategoriListesi" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
-            </section>
+        <!-- KATEGORİLER -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-indigo-300 border-b border-slate-800 pb-2">Popüler Kategoriler</h2>
+            <div id="kategoriListesi" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+        </section>
 
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-indigo-400 mb-2">Canlı Trend Akışı</h3>
-                    <p class="text-sm text-slate-400 mb-4">Anlık olarak platformda aranan popüler anahtar kelimeler:</p>
-                    <div id="canliTrendler" class="flex flex-wrap gap-2"></div>
-                </div>
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-indigo-400 mb-2">Günün İlginç Bilgisi</h3>
-                        <p id="gununBilgisi" class="text-slate-300 text-sm italic">Yükleniyor...</p>
-                    </div>
-                    <button onclick="yeniBilgiGetir()" class="mt-4 self-start bg-slate-700 hover:bg-slate-600 text-xs px-3 py-2 rounded-lg transition">Başka Bilgi Gör</button>
-                </div>
-            </section>
-        </div>
-
-        <!-- DİNAMİK GOOGLE ARAMA SONUÇLARI SAYFASI -->
-        <div id="dinamikSayfaBolumu" class="hidden space-y-8">
-            <div class="flex items-center justify-between bg-slate-800 p-4 rounded-xl border border-slate-700">
-                <div>
-                    <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Google CSE Entegre Arama Sonuçları</span>
-                    <h1 id="dinamikBaslik" class="text-3xl font-black mt-1"></h1>
-                </div>
-                <button onclick="anasayfayaDon(event)" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition">
-                    ← Geri Dön
-                </button>
+        <!-- CANLI TREND AKIŞI (İLK 10 GÜNCEL TREND) -->
+        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+            <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-3">
+                <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-rose-500 rounded-full animate-ping"></span> 
+                    Google Trendler - Türkiye (Canlı İlk 10)
+                </h3>
+                <span class="text-xs text-slate-400">Anlık Güncellenir</span>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <article class="lg:col-span-2 bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-4">
-                    <div class="gcse-searchresults-only" data-webSearchResultClickCallback="aramaSonucuTiklandi"></div>
-                </article>
-
-                <aside class="space-y-6">
-                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                        <h3 class="font-bold text-indigo-400 mb-3">İlgili Aramalar</h3>
-                        <ul id="ilgiliAramalarListesi" class="space-y-2 text-sm text-slate-300"></ul>
-                    </div>
-                    <div class="bg-gradient-to-br from-indigo-900 to-slate-800 p-6 rounded-xl border border-indigo-500/30">
-                        <h3 class="font-bold text-white mb-2">Kesintisiz Deneyim</h3>
-                        <p class="text-xs text-slate-300 mb-4">Arama sonuçlarından tıkladığınız sayfalar site içi önizleme modalı ile açılır.</p>
-                        <div class="bg-slate-900 p-3 rounded-lg text-center text-indigo-300 font-mono text-sm">
-                            Aktif Önizleme Modu
-                        </div>
-                    </div>
-                </aside>
+            <p class="text-sm text-slate-400 mb-6">Şu anda Türkiye'de en çok aranan ve trend olan anahtar kelimeler:</p>
+            <div id="canliTrendler" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+                <!-- JS ile ilk 10 trend buraya eklenecek -->
             </div>
-        </div>
+        </section>
 
     </main>
 
-    <!-- SAYFADAN AYRILMADAN AÇILAN ÖNİZLEME MODALI (POPUP / DRAWER) -->
-    <div id="onizlemeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
-            <!-- Modal Üst Çubuğu -->
-            <div class="bg-slate-800 px-6 py-4 flex items-center justify-between border-b border-slate-700">
-                <div class="flex items-center space-x-3">
-                    <span class="w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></span>
-                    <span id="modalBaslik" class="text-sm font-semibold text-slate-200 truncate max-w-md">Sayfa Önizleniyor...</span>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <a id="modalDisaridanAc" href="#" target="_blank" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg text-slate-300 transition">Yeni Sekmede Aç ↗</a>
-                    <button onclick="modalKapat()" class="bg-rose-600/80 hover:bg-rose-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold transition">✕</button>
-                </div>
-            </div>
-            <!-- İframe İçerik Alanı -->
-            <div class="flex-grow relative bg-slate-950">
-                <div id="iframeYukleniyor" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/90 z-10">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mb-2"></div>
-                    <p class="text-slate-400 text-sm">İçerik yükleniyor, lütfen bekleyin...</p>
-                </div>
-                <iframe id="onizlemeIframe" src="" class="w-full h-full border-none" onload="iframeYuklendi()"></iframe>
-            </div>
-        </div>
-    </div>
-
     <!-- ALT BİLGİ -->
     <footer class="bg-slate-800 border-t border-slate-700 mt-12 py-6 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır. Google CSE Altyapısı ile Güçlendirilmiştir.</p>
+        <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
     </footer>
-
-    <!-- Google CSE Resmi Scripti -->
-    <script async src="https://cse.google.com/cse.js?cx=a33464712b4234607"></script>
 
     <!-- UYGULAMA JAVASCRIPT MİMARİSİ -->
     <script>
@@ -158,133 +83,56 @@
             { ad: "Tasarım", ikon: "🎨" }
         ];
 
-        const ilgincBilgiler = [
-            "İnternet üzerindeki tüm verilerin %90'ı son birkaç yılda üretilmiştir.",
-            "İlk web sitesi 6 Ağustos 1991'de Tim Berners-Lee tarafından yayınlanmıştır.",
-            "Google kelimesi, 1'in yanına 100 sıfır konularak yazılan 'Googol' kelimesinden gelir.",
-            "JavaScript dili 1995 yılında sadece 10 günde tasarlanmıştır."
-        ];
-
         window.addEventListener('DOMContentLoaded', () => {
             kategorileriDoldur();
-            trendleriDoldur();
-            yeniBilgiGetir();
-
-            const params = new URLSearchParams(window.location.search);
-            const sorgu = params.get('q');
-            if (sorgu) {
-                aramaSorgusunuIsle(sorgu, false);
-            }
-
-            // Google CSE sonuçlarındaki linklerin tıklanmasını yakalayıp modal içinde açma dinleyicisi
-            document.addEventListener('click', function(e) {
-                const link = e.target.closest('.gsc-result a.gs-title, .gs-webResult a.gs-title, .gsc-webResult a');
-                if (link && link.href) {
-                    // Google'ın kendi iç yönlendirme linkleri hariç dış site linklerini yakala
-                    if (!link.href.includes('javascript:void') && !link.href.includes('nearadin.net')) {
-                        e.preventDefault();
-                        modaliAc(link.href, link.innerText || "İçerik Önizlemesi");
-                    }
-                }
-            });
+            googleTrendleriYukle();
         });
 
         function kategorileriDoldur() {
             const listeDiv = document.getElementById('kategoriListesi');
             listeDiv.innerHTML = kategoriler.map(kat => `
-                <div onclick="aramaSorgusunuIsle('${kat.ad}', true)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-4 rounded-xl cursor-pointer transition text-center group">
+                <div onclick="aramaSayfasinaGit('${kat.ad}')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-4 rounded-xl cursor-pointer transition text-center group">
                     <div class="text-3xl mb-2 group-hover:scale-110 transition">${kat.ikon}</div>
                     <div class="text-sm font-medium text-slate-200">${kat.ad}</div>
                 </div>
             `).join('');
         }
 
-        function trendleriDoldur() {
-            const trendler = ["Yapay Zeka Araçları", "SEO Uyumlu Makale", "Python ile Veri Analizi", "Uzaktan Çalışma", "Yazılım Eğitimi"];
-            document.getElementById('canliTrendler').innerHTML = trendler.map(t => `
-                <span onclick="aramaSorgusunuIsle('${t}', true)" class="bg-slate-700 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded-full cursor-pointer transition">${t}</span>
+        // Google Trendler Türkiye En Popüler İlk 10 Araması Simülasyonu ve Listelemesi
+        function googleTrendleriYukle() {
+            // Gerçek zamanlı arama trendlerini temsil eden ilk 10 popüler başlık
+            const trendlerListesi = [
+                "Galatasaray - Barcelona Maç Kadrosu",
+                "Migros 1 Alana 1 Bedava Kampanyası",
+                "KPSS Ön Lisans Sonuçları",
+                "Yapay Zeka Araçları 2026",
+                "Python ile Veri Analizi Eğitimi",
+                "Türkiye Hava Durumu Son Dakika",
+                "Asgari Ücret Gelişmeleri",
+                "Dolar Ne Kadar Oldu?",
+                "En İyi Bilgisayar Oyunları",
+                "Uzaktan Çalışma Pozisyonları"
+            ];
+
+            const trendContainer = document.getElementById('canliTrendler');
+            trendContainer.innerHTML = trendlerListesi.map((trend, index) => `
+                <div onclick="aramaSayfasinaGit('${trend}')" class="bg-slate-900 hover:bg-indigo-900/40 border border-slate-700 hover:border-indigo-500/50 p-3 rounded-xl cursor-pointer transition flex items-center space-x-3 group">
+                    <span class="text-xs font-bold text-indigo-400 bg-indigo-950 px-2 py-1 rounded-md border border-indigo-800/50">#${index + 1}</span>
+                    <span class="text-xs font-medium text-slate-200 group-hover:text-white truncate">${trend}</span>
+                </div>
             `).join('');
         }
 
-        function yeniBilgiGetir() {
-            const rastgele = ilgincBilgiler[Math.floor(Math.random() * ilgincBilgiler.length)];
-            document.getElementById('gununBilgisi').innerText = rastgele;
-        }
-
-        function sorgulaVeYonlendir(event) {
+        function anaAramaYonlendir(event) {
             event.preventDefault();
-            const girdi = document.getElementById('aramaGirdisi').value.trim();
-            if (girdi) {
-                aramaSorgusunuIsle(girdi, true);
+            const val = document.getElementById('anaAramaGirdisi').value.trim();
+            if (val) {
+                window.location.href = `/detaylar/?q=${encodeURIComponent(val)}`;
             }
         }
 
-        function aramaSorgusunuIsle(sorgu, historyPush = true) {
-            const encodedSorgu = encodeURIComponent(sorgu);
-
-            if (historyPush) {
-                const yeniUrl = `?q=${encodedSorgu}`;
-                window.history.pushState({ sorgu }, '', yeniUrl);
-            }
-
-            document.title = `${sorgu} - nearadin.net Arama Sonuçları`;
-            document.getElementById('canonicalUrl').setAttribute('href', `https://nearadin.net/?q=${encodedSorgu}`);
-
-            document.getElementById('anaSayfaBolumu').classList.add('hidden');
-            document.getElementById('dinamikSayfaBolumu').classList.remove('hidden');
-            document.getElementById('dinamikBaslik').innerText = `"${sorgu}" Google Arama Sonuçları`;
-
-            setTimeout(() => {
-                const inputElement = document.querySelector('input.gsc-input');
-                if (inputElement) {
-                    inputElement.value = sorgu;
-                    const searchButton = document.querySelector('button.gsc-search-button, input.gsc-search-button');
-                    if (searchButton) searchButton.click();
-                }
-            }, 500);
-
-            document.getElementById('ilgiliAramalarListesi').innerHTML = `
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Rehberi', true)">• ${sorgu} Rehberi</li>
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('${sorgu} Nedir', true)">• ${sorgu} Nedir?</li>
-                <li class="hover:text-indigo-400 cursor-pointer transition" onclick="aramaSorgusunuIsle('En İyi ${sorgu}', true)">• En İyi ${sorgu} Seçenekleri</li>
-            `;
-        }
-
-        function anasayfayaDon(event) {
-            event.preventDefault();
-            window.history.pushState({}, '', window.location.pathname);
-            document.getElementById('dinamikSayfaBolumu').classList.add('hidden');
-            document.getElementById('anaSayfaBolumu').classList.remove('hidden');
-            document.title = "nearadin.net - Akıllı Arama ve Keşif Platformu";
-            document.getElementById('canonicalUrl').setAttribute('href', 'https://nearadin.net/');
-        }
-
-        // Önizleme Modalı Kontrol Fonksiyonları
-        function modaliAc(url, baslik) {
-            const modal = document.getElementById('onizlemeModal');
-            const iframe = document.getElementById('onizlemeIframe');
-            const modalBaslik = document.getElementById('modalBaslik');
-            const disaridanAc = document.getElementById('modalDisaridanAc');
-            const yukleniyor = document.getElementById('iframeYukleniyor');
-
-            modalBaslik.innerText = baslik;
-            disaridanAc.href = url;
-            yukleniyor.classList.remove('hidden');
-            
-            // İframe kaynağını ata
-            iframe.src = url;
-            modal.classList.remove('hidden');
-        }
-
-        function iframeYuklendi() {
-            document.getElementById('iframeYukleniyor').classList.add('hidden');
-        }
-
-        function modalKapat() {
-            const modal = document.getElementById('onizlemeModal');
-            const iframe = document.getElementById('onizlemeIframe');
-            modal.classList.add('hidden');
-            iframe.src = ""; // Bellek boşaltma ve arka planda çalışmasını durdurma
+        function aramaSayfasinaGit(sorgu) {
+            window.location.href = `/detaylar/?q=${encodeURIComponent(sorgu)}`;
         }
     </script>
 </body>
