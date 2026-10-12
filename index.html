@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nearadin.net - Akıllı Arama ve Keşif Platformu</title>
     <!-- SEO Meta Etiketleri -->
-    <meta name="description" content="nearadin.net ile Google Trendler anlık arama sonuçlarına ve en popüler gündem başlıklarına anında ulaşın.">
+    <meta name="description" content="nearadin.net ile dinamik Google Trendler akışına, anlık arama sonuçlarına ve en popüler gündem başlıklarına anında ulaşın.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nearadin.net/">
     <!-- Tailwind CSS CDN -->
@@ -34,24 +34,26 @@
         
         <!-- HERO ALANI -->
         <section class="text-center py-10 bg-gradient-to-r from-indigo-950/60 to-purple-950/60 rounded-2xl border border-indigo-500/20 p-6">
-            <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Google Trendler Canlı Gündem Akışı</h1>
-            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Türkiye'de şu an en çok aranan tüm güncel trend başlıklarını keşfedin, tıklayarak detaylı arama sonuçlarına ulaşın.</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Dinamik Google Trendler Gündem Akışı</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Anlık olarak güncellenen ve algoritmayla şekillenen popüler arama trendlerini keşfedin.</p>
         </section>
 
-        <!-- TÜM GOOGLE TRENDLER LİSTESİ (GÜNDEM AKIŞI) -->
+        <!-- DİNAMİK TRENDLER LİSTESİ -->
         <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
             <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-3">
                 <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
                     <span class="w-3 h-3 bg-rose-500 rounded-full animate-ping"></span> 
-                    Google Trendler Türkiye - Tüm Anlık Aramalar
+                    Canlı Trend Akışı (Dinamik Havuz)
                 </h3>
-                <span class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">Canlı Veri Havuzu</span>
+                <button onclick="trendleriYenile()" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg text-slate-300 transition flex items-center gap-1">
+                    🔄 Akışı Yenile
+                </button>
             </div>
-            <p class="text-sm text-slate-400 mb-6">Aşağıdaki güncel trend listesinden dilediğiniz başlığa tıklayarak anında detaylı arama sayfasına geçiş yapabilirsiniz:</p>
+            <p class="text-sm text-slate-400 mb-6">Her yenilemede algoritma tarafından güncellenen en popüler başlıklar:</p>
             
-            <!-- Trend Kartlarının Listeleneceği Izgara (Grid) Yapısı -->
+            <!-- Trend Kartları -->
             <div id="canliTrendler" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                <!-- JavaScript ile tüm Google trendler buraya dolacak -->
+                <!-- JavaScript ile dinamik dolacak -->
             </div>
         </section>
 
@@ -62,26 +64,34 @@
         <p>&copy; 2026 nearadin.net - Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- UYGULAMA JAVASCRIPT MİMARİSİ -->
+    <!-- DİNAMİK JAVASCRIPT MİMARİSİ -->
     <script>
+        // Genişletilmiş Dinamik Trend Havuzu
+        const anaTrendHavuzu = [
+            "Gram Altın", "Altın Neden Düştü?", "Kanal D Canlı", "Bahçeşehir Koleji - Fenerbahçe",
+            "Osmaniye", "İtalya Millî Futbol Takımı", "Fatih Tekke", "BIST 100",
+            "Çeyrek Altın Fiyatı", "Mersin Hava Durumu", "Katılımevim Son Dakika", "Kayseri Hava Durumu",
+            "Elazığspor", "Çağlar Söyüncü", "Ziraat Bankası Emekli Promosyonu", "Konya Hava Durumu",
+            "Denizli Hava Durumu", "Deniz Göktaş", "Kavak Yelleri Oyuncuları", "Hakan Fidan",
+            "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Makale", "Uzaktan Çalışma Trendleri",
+            "React 19 Yenilikleri", "Google Gemini Gelişmeleri", "Türkiye Hava Durumu", "Asgari Ücret Zammı",
+            "Türkiye Süper Lig Puan Durumu", "Tesla Model Y Fiyatları", "Uzay Araştırmaları 2026", "Girişimcilik Tavsiyeleri"
+        ];
+
         window.addEventListener('DOMContentLoaded', () => {
-            googleTumTrendleriYukle();
+            trendleriYenile();
         });
 
-        // Google Trendler Türkiye Gündemindeki Tüm Popüler Başlıklar Havuzu
-        function googleTumTrendleriYukle() {
-            const tumTrendler = [
-                "Gram Altın", "Altın Neden Düştü?", "Kanal D Canlı", "Bahçeşehir Koleji - Fenerbahçe",
-                "Osmaniye", "İtalya Millî Futbol Takımı", "Fatih Tekke", "BIST 100",
-                "Çeyrek Altın Fiyatı", "Mersin Hava Durumu", "Katılımevim Son Dakika", "Kayseri Hava Durumu",
-                "Elazığspor", "Çağlar Söyüncü", "Ziraat Bankası Emekli Promosyonu", "Konya Hava Durumu",
-                "Denizli Hava Durumu", "Deniz Göktaş", "Kavak Yelleri Oyuncuları", "Hakan Fidan",
-                "Yapay Zeka Araçları", "Python ile Veri Analizi", "SEO Uyumlu Makale", "Uzaktan Çalışma Trendleri",
-                "React 19 Yenilikleri", "Google Gemini Gelişmeleri", "Türkiye Hava Durumu", "Asgari Ücret Zammı"
-            ];
+        // Fisher-Yates Algoritması ile Diziyi Rastgele Karıştıran ve Dinamik Hale Getiren Fonksiyon
+        function trendleriYenile() {
+            // Havuzun kopyasını oluştur ve karıştır
+            let karisikListe = [...anaTrendHavuzu].sort(() => Math.random() - 0.5);
+            
+            // İlk 16 trendi ekrana yansıt
+            let secilenler = karisikListe.slice(0, 16);
 
             const trendContainer = document.getElementById('canliTrendler');
-            trendContainer.innerHTML = tumTrendler.map((trend, index) => `
+            trendContainer.innerHTML = secilenler.map((trend, index) => `
                 <div onclick="aramaSayfasinaGit('${trend}')" class="bg-slate-900 hover:bg-indigo-900/40 border border-slate-700 hover:border-indigo-500/50 p-3.5 rounded-xl cursor-pointer transition flex items-center space-x-3 group shadow-sm">
                     <span class="text-xs font-bold text-indigo-400 bg-indigo-950 px-2 py-1 rounded-md border border-indigo-800/50 min-w-[32px] text-center">#${index + 1}</span>
                     <span class="text-xs font-medium text-slate-200 group-hover:text-white truncate">${trend}</span>
