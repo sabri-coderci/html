@@ -8,7 +8,6 @@
     <meta name="keywords" content="firma rehberi, işletme bul, arama motoru, nearadin, ne nerede aradin">
     <link rel="canonical" href="https://www.nearadin.net/">
     
-    <!-- Modern ve SEO Uyumlu Tasarım İçin Stil -->
     <style>
         :root {
             --primary-color: #0056b3;
@@ -37,7 +36,6 @@
             text-align: center;
         }
 
-        /* Logo Bağlantısı Stili */
         .logo a {
             text-decoration: none;
             display: inline-block;
@@ -146,7 +144,7 @@
             background-color: #e55b00;
         }
 
-        /* Yükseklik Sınırı Olmayan, Mobil Uyumlu Sonuç Alanı */
+        /* Sınırsız Yükseklikli Sonuç Alanı */
         .results-container {
             margin-top: 20px;
             background: #ffffff;
@@ -154,7 +152,7 @@
             overflow: hidden;
             border: 1px solid #e1e8ed;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            display: none; /* Arama yapılana kadar gizli */
+            display: none;
             width: 100%;
         }
 
@@ -175,7 +173,6 @@
             background: #ffffff;
         }
 
-        /* Mobil Uyum Düzenlemeleri */
         @media (max-width: 768px) {
             .hero-section {
                 padding: 25px 15px;
@@ -200,7 +197,6 @@
 
     <header>
         <div class="logo">
-            <!-- Anasayfa Bağlantılı Logo -->
             <a href="https://www.nearadin.net/" title="Nearadin.net Anasayfa">
                 <h1>Nearadin<span>.net</span></h1>
             </a>
@@ -212,11 +208,10 @@
             <h2>Aradığınız İşletme ve Hizmetler Tek Tıkla Elinizin Altında</h2>
             <p>Ne aradığınızı ve nerede aradığınızı yazın, saniyeler içinde bulun.</p>
             
-            <!-- Ne / Nerede Arama Formu -->
-            <form id="bulurumForm" class="search-form" onsubmit="sitedeAra(event)">
+            <form id="bulurumForm" class="search-form" onsubmit="formAramaYap(event)">
                 <div class="search-input-group">
                     <label for="neArama">Ne Arıyorsunuz?</label>
-                    <input type="text" id="neArama" placeholder="Örn: Boya, Restoran, Tesisatçı..." required>
+                    <input type="text" id="neArama" placeholder="Örn: Yemek, Boya, Tesisatçı..." required>
                 </div>
                 <div class="search-input-group">
                     <label for="neredeArama">Nerede?</label>
@@ -228,7 +223,6 @@
             </form>
         </section>
 
-        <!-- Siteden Ayrılmadan Gösterilen Dinamik Sonuç Alanı -->
         <div class="results-container" id="sonucKutusu">
             <iframe name="aramaSonuclari" id="aramaFrame" class="results-frame" title="Bulurum Arama Sonuçları"></iframe>
         </div>
@@ -238,25 +232,64 @@
         <p>&copy; 2026 Nearadin.net - Tüm hakları saklıdır.</p>
     </footer>
 
-    <!-- Form verilerini Bulurum URL yapısına uyarlayıp iframe içinde açan script -->
     <script>
-        function sitedeAra(event) {
-            event.preventDefault();
-            
-            var ne = document.getElementById('neArama').value.trim();
-            var nerede = document.getElementById('neredeArama').value.trim();
-            
-            // Bulurum'un URL formatı: /search/{Ne}/{Nerede}/
-            var hedefUrl = "https://www.bulurum.com/search/" + encodeURIComponent(ne) + "/" + encodeURIComponent(nerede) + "/";
-            
-            var iframe = document.getElementById('aramaFrame');
-            iframe.src = hedefUrl;
-            
-            // Sonuç kutusunu görünür yap ve kullanıcıyı yumuşakça oraya kaydır
-            var sonucKutusu = document.getElementById('sonucKutusu');
-            sonucKutusu.style.display = 'block';
-            sonucKutusu.scrollIntoView({ behavior: 'smooth' });
+        // Türkçe karakterleri ve boşlukları URL dostu slug haline getiren yardımcı fonksiyon
+        function slugify(text) {
+            var trMap = {
+                'ç': 'c', 'Ç': 'c', 'ğ': 'g', 'Ğ': 'g',
+                'ı': 'i', 'I': 'i', 'İ': 'i', 'ö': 'o',
+                'Ö': 'o', 'ş': 's', 'Ş': 's', 'ü': 'u', 'Ü': 'u'
+            };
+            for (var key in trMap) {
+                text = text.replace(new RegExp(key, 'g'), trMap[key]);
+            }
+            return text
+                .toLowerCase()
+                .replace(/[^a-z0-9 -]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-');
         }
+
+        // Form gönderildiğinde URL hash'ini günceller
+        function formAramaYap(event) {
+            event.preventDefault();
+            var ne = slugify(document.getElementById('neArama').value.trim());
+            var nerede = slugify(document.getElementById('neredeArama').value.trim());
+
+            if (ne && nerede) {
+                window.location.hash = '#/' + ne + '/' + nerede;
+            }
+        }
+
+        // URL'deki hash değiştiğinde veya sayfa doğrudan o URL ile yüklendiğinde aramayı çalıştırır
+        function yukleUrlAramasi() {
+            var hash = window.location.hash; // Örn: #/yemek/istanbul
+            if (hash && hash.startsWith('#/')) {
+                var parcalar = hash.replace('#/', '').split('/');
+                if (parcalar.length >= 2) {
+                    var ne = decodeURIComponent(parcalar[0]);
+                    var nerede = decodeURIComponent(parcalar[1]);
+
+                    // Form alanlarını doldur
+                    document.getElementById('neArama').value = ne;
+                    document.getElementById('neredeArama').value = nerede;
+
+                    // Bulurum URL'sine yönlendir
+                    var hedefUrl = "https://www.bulurum.com/search/" + encodeURIComponent(ne) + "/" + encodeURIComponent(nerede) + "/";
+                    
+                    var iframe = document.getElementById('aramaFrame');
+                    iframe.src = hedefUrl;
+
+                    var sonucKutusu = document.getElementById('sonucKutusu');
+                    sonucKutusu.style.display = 'block';
+                    sonucKutusu.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        // Sayfa yüklendiğinde ve hash değiştiğinde tetikle
+        window.addEventListener('load', yukleUrlAramasi);
+        window.addEventListener('hashchange', yukleUrlAramasi);
     </script>
 
 </body>
