@@ -73,15 +73,47 @@
             font-size: 1.1rem;
         }
 
-        /* Arama Kutusu Konteynerı */
-        .search-container {
+        /* Özel Özgün Arama Formu Tasarımı */
+        .search-form {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            position: relative;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
 
-        /* Sonuçların gösterileceği alan (Siteden ayrılmadan görünüm için) */
+        .search-form input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-form input[type="text"]:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-form button {
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: #e55b00;
+        }
+
+        /* Arama Sonuçlarının Sitenin İçinde Görüneceği Alan */
         .results-container {
             margin-top: 30px;
             background: #ffffff;
@@ -89,11 +121,12 @@
             overflow: hidden;
             border: 1px solid #e1e8ed;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            display: none; /* Arama yapılana kadar gizli durur */
         }
 
         iframe.results-frame {
             width: 100%;
-            height: 600px;
+            height: 650px;
             border: none;
         }
 
@@ -114,6 +147,12 @@
             .hero-section h2 {
                 font-size: 1.4rem;
             }
+            .search-form {
+                flex-direction: column;
+            }
+            .search-form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -130,23 +169,29 @@
             <h2>Aradığınız İşletme, Firma ve Hizmetler Tek Tıkla Elinizin Altında</h2>
             <p>Türkiye'nin en kapsamlı rehberiyle aradığınızı saniyeler içinde bulun.</p>
             
-            <!-- Bulurum Arama Kutusu Entegrasyonu -->
-            <div class="search-container">
-                <iframe width='492px' frameborder='0' style='border:0px transparent none; overflow:hidden;' height='65px' src='https://www.bulurum.com/GraphLink/SearchBox'></iframe>
-                <a href='https://www.bulurum.com/' style='display: block;height: 16px;left:319px;margin-top: -21px;position: relative;width: 53px;cursor:pointer' target='_blank'></a>
-            </div>
+            <!-- Özgün Arama Formu (Sonuçları iframe içine gönderir) -->
+            <form action="https://www.bulurum.com/search/" method="get" target="aramaSonuclari" class="search-form" onsubmit="gosterSonucAlani()">
+                <input type="text" name="q" placeholder="Ne aramak istemiştiniz? (Örn: Boya, İstanbul...)" required>
+                <button type="submit">Ara</button>
+            </form>
         </section>
 
-        <!-- Sonuçları Siteden Ayrılmadan Göstermek İçin Alan (Opsiyonel Çerçeve) -->
-        <!-- Eğer arama sonuçlarının doğrudan bu alanda listelenmesini istiyorsanız hedefi buraya yönlendirebilirsiniz -->
-        <div class="results-container">
-            <iframe name="aramaSonuclari" class="results-frame" src="about:blank" title="Arama Sonuçları"></iframe>
+        <!-- Sonuçların Siteden Ayrılmadan Gösterildiği Çerçeve -->
+        <div class="results-container" id="sonucKutusu">
+            <iframe name="aramaSonuclari" class="results-frame" title="Bulurum Arama Sonuçları"></iframe>
         </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Nearadin.net - Tüm hakları saklıdır.</p>
     </footer>
+
+    <!-- Arama yapıldığında sonuç alanını görünür kılan küçük script -->
+    <script>
+        function gosterSonucAlani() {
+            document.getElementById('sonucKutusu').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
