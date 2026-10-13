@@ -37,9 +37,21 @@
             text-align: center;
         }
 
+        /* Logo Bağlantısı Stili */
+        .logo a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
         .logo h1 {
             font-size: 2rem;
             color: var(--primary-color);
+            margin: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo h1:hover {
+            opacity: 0.9;
         }
 
         .logo span {
@@ -148,8 +160,8 @@
 
         iframe.results-frame {
             width: 100%;
-            min-height: 800px; /* İçerik uzadıkça aşağı kayabilir */
-            height: 100vh;    /* Ekran yüksekliğine uyum sağlar */
+            min-height: 800px;
+            height: 100vh;
             border: none;
         }
 
@@ -188,7 +200,10 @@
 
     <header>
         <div class="logo">
-            <h1>Nearadin<span>.net</span></h1>
+            <!-- Anasayfa Bağlantılı Logo -->
+            <a href="https://www.nearadin.net/" title="Nearadin.net Anasayfa">
+                <h1>Nearadin<span>.net</span></h1>
+            </a>
         </div>
     </header>
 
