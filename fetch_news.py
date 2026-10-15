@@ -37,7 +37,8 @@ CATEGORIES = [
     "Restoran", "Tesisatçı", "Elektrikçi", "Boyacı", "Kuaför", "Berber",
     "Diş Hekimi", "Eczane", "Veteriner", "Oto Servis", "Çilingir", "Nakliyat",
     "Avukat", "Kafe", "Market", "Otel", "Klima Servisi", "Halı Yıkama",
-    "Güzellik Salonu", "Temizlik Şirketi",
+    "Güzellik Salonu", "Temizlik Şirketi","PTT","Belediye","Kaymakamlık","Valilik",
+    "Noter","Playstation","Petshop","Otel","Öğretmen Evi","Polis Evi"
 ]
 CITIES = [
     "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya",
