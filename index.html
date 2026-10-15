@@ -1,301 +1,220 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nearadin.net - Aradığınız Her Şey Burada | Firma ve İşletme Rehberi</title>
-    <meta name="description" content="Nearadin.net ile Türkiye'deki firmaları, işletmeleri ve aradığınız hizmetleri kolayca bulun. Hızlı, güvenilir ve güncel rehber arama motoru.">
-    <meta name="keywords" content="firma rehberi, işletme bul, arama motoru, nearadin, ne nerede aradin">
-    <link rel="canonical" href="https://www.nearadin.net/">
-    
-    <style>
-        :root {
-            --primary-color: #0056b3;
-            --accent-color: #ff6600;
-            --bg-color: #f8f9fa;
-            --text-color: #333333;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: #ffffff;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .logo a {
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .logo h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .logo h1:hover {
-            opacity: 0.9;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 15px;
-            text-align: center;
-        }
-
-        .hero-section {
-            background: #ffffff;
-            padding: 40px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-
-        .hero-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .hero-section p {
-            color: #666;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-
-        /* Ne / Nerede Arama Formu Tasarımı */
-        .search-form {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 750px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .search-input-group {
-            flex: 1;
-            min-width: 220px;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .search-input-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .search-form input[type="text"] {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .search-form input[type="text"]:focus {
-            border-color: var(--primary-color);
-        }
-
-        .search-btn-container {
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .search-form button {
-            padding: 12px 30px;
-            background-color: var(--accent-color);
-            color: #fff;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            height: 47px;
-        }
-
-        .search-form button:hover {
-            background-color: #e55b00;
-        }
-
-        /* Sınırsız Yükseklikli Sonuç Alanı */
-        .results-container {
-            margin-top: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e1e8ed;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            display: none;
-            width: 100%;
-        }
-
-        iframe.results-frame {
-            width: 100%;
-            min-height: 800px;
-            height: 100vh;
-            border: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            border-top: 1px solid #e1e8ed;
-            background: #ffffff;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 25px 15px;
-            }
-            .hero-section h2 {
-                font-size: 1.4rem;
-            }
-            .search-form {
-                flex-direction: column;
-            }
-            .search-btn-container {
-                width: 100%;
-            }
-            .search-form button {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nearadin.net | Firma ve İşletme Rehberi: Ne Arıyorsunuz, Nerede?</title>
+<meta name="description" content="Türkiye'deki restoran, tesisatçı, doktor, kuaför ve binlerce işletmeyi şehir ve ilçeye göre harita üzerinde saniyeler içinde bulun. Ücretsiz firma rehberi.">
+<meta name="robots" id="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0056b3">
+<link rel="canonical" href="https://www.nearadin.net/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230056b3'/%3E%3Ctext x='32' y='45' font-size='40' font-weight='700' text-anchor='middle' fill='%23fff' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Nearadin.net">
+<meta property="og:title" content="Nearadin.net | Firma ve İşletme Rehberi">
+<meta property="og:description" content="Ne aradığınızı ve nerede aradığınızı yazın; işletmeleri harita üzerinde hemen bulun.">
+<meta property="og:url" content="https://www.nearadin.net/">
+<meta property="og:image" content="https://www.nearadin.net/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://www.nearadin.net/#website","url":"https://www.nearadin.net/","name":"Nearadin.net","inLanguage":"tr-TR",
+ "potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.nearadin.net/?ne={ne}&nerede={nerede}"},"query-input":["required name=ne","required name=nerede"]}},
+{"@type":"Organization","@id":"https://www.nearadin.net/#org","name":"Nearadin.net","url":"https://www.nearadin.net/"}
+]}
+</script>
+<style>
+:root{--primary:#0056b3;--accent:#ff6600;--accent-dark:#c24e00;--bg:#f6f8fb;--text:#1f2933;--muted:#52606d;--line:#dbe3ec}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--primary)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 14px;z-index:10}
+.skip:focus{left:8px;top:8px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0;text-align:center}
+.logo{display:inline-block;font-size:1.9rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+.logo span{color:var(--accent)}
+main{max-width:1000px;margin:24px auto;padding:0 15px}
+.hero{background:#fff;padding:36px 20px;border-radius:12px;border:1px solid var(--line);text-align:center}
+.hero h1{font-size:1.8rem;line-height:1.25;color:#17324d;margin-bottom:10px}
+.hero p.lead{color:var(--muted);font-size:1.05rem;margin-bottom:24px}
+.search{display:flex;gap:10px;max-width:780px;margin:0 auto;flex-wrap:wrap;align-items:flex-end}
+.field{flex:1;min-width:220px;text-align:left}
+.field label{display:block;font-size:.85rem;font-weight:600;color:#3e4c59;margin-bottom:5px}
+.field input{width:100%;padding:12px 14px;font-size:1rem;border:1px solid #b8c4d0;border-radius:6px;background:#fff;color:var(--text)}
+.field input:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(0,86,179,.18)}
+.search button{padding:0 32px;height:47px;background:var(--accent-dark);color:#fff;font-size:1rem;font-weight:700;border:0;border-radius:6px;cursor:pointer}
+.search button:hover{background:#a84300}
+.chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.chips b{font-size:.9rem;color:var(--muted);font-weight:600}
+.chips a{padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:#fff;color:var(--primary);text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--primary);background:#eef5fd}
+#sonuc{display:none;margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#sonuc h2{font-size:1.15rem;padding:14px 16px 4px;text-align:left}
+.alt{display:flex;flex-wrap:wrap;gap:8px;padding:8px 16px 14px}
+.alt a{font-size:.9rem;padding:7px 14px;border-radius:6px;background:#eef5fd;text-decoration:none;font-weight:600}
+.alt a:hover{background:#dcebfa}
+#harita{display:block;width:100%;height:70vh;min-height:420px;border:0}
+section.info{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 22px;text-align:left}
+section.info h2{font-size:1.4rem;color:#17324d;margin-bottom:12px}
+section.info p{max-width:72ch;color:#3e4c59;margin-bottom:10px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:6px}
+.steps h3{font-size:1.05rem;margin-bottom:4px}
+details{border-top:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 0}
+footer{margin-top:36px;padding:22px 15px;background:#fff;border-top:1px solid var(--line);text-align:center;color:#616e7c;font-size:.9rem}
+footer nav{margin-bottom:8px}
+footer nav a{margin:0 10px}
+@media (max-width:640px){.hero{padding:24px 14px}.hero h1{font-size:1.4rem}.search button{width:100%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<header>
+  <a class="logo" href="/" title="Nearadin.net ana sayfa">Nearadin<span>.net</span></a>
+</header>
 
-    <!-- Admatic AUTO ads START -->
-<ins data-publisher="adm-pub-342021502" data-ad-network="6938571fadda546eb28ca492"   class="adm-ads-area"></ins>
-<script type="text/javascript" src="https://static.cdn.admatic.com.tr/showad/showad.min.js"></script>
+<main id="icerik">
+  <section class="hero" aria-labelledby="baslik">
+    <h1 id="baslik">Aradığınız işletme ve hizmetler tek tıkla elinizin altında</h1>
+    <p class="lead">Ne aradığınızı ve nerede aradığınızı yazın, işletmeleri harita üzerinde saniyeler içinde bulun.</p>
+    <form id="aramaForm" class="search" role="search" action="/" method="get">
+      <div class="field">
+        <label for="ne">Ne arıyorsunuz?</label>
+        <input type="text" id="ne" name="ne" list="kategoriler" placeholder="Örn: Restoran, Tesisatçı, Kuaför" autocomplete="off" maxlength="80" required>
+      </div>
+      <div class="field">
+        <label for="nerede">Nerede?</label>
+        <input type="text" id="nerede" name="nerede" list="sehirler" placeholder="Örn: İstanbul, Kadıköy, Ankara" autocomplete="off" maxlength="80" required>
+      </div>
+      <button type="submit">Ara</button>
+    </form>
+    <div class="chips" aria-label="Popüler aramalar">
+      <b>Popüler:</b>
+      <a href="/?ne=Restoran&amp;nerede=%C4%B0stanbul" data-ne="Restoran" data-nerede="İstanbul">Restoran İstanbul</a>
+      <a href="/?ne=Tesisat%C3%A7%C4%B1&amp;nerede=Ankara" data-ne="Tesisatçı" data-nerede="Ankara">Tesisatçı Ankara</a>
+      <a href="/?ne=Di%C5%9F%20Hekimi&amp;nerede=%C4%B0zmir" data-ne="Diş Hekimi" data-nerede="İzmir">Diş Hekimi İzmir</a>
+      <a href="/?ne=Kuaf%C3%B6r&amp;nerede=Bursa" data-ne="Kuaför" data-nerede="Bursa">Kuaför Bursa</a>
+      <a href="/?ne=Eczane&amp;nerede=Van" data-ne="Eczane" data-nerede="Van">Eczane Van</a>
+      <a href="/?ne=Oto%20Servis&amp;nerede=Antalya" data-ne="Oto Servis" data-nerede="Antalya">Oto Servis Antalya</a>
+    </div>
+    <noscript><p style="margin-top:16px">Arama için JavaScript gerekir. <a href="https://www.google.com/maps">Google Haritalar'ı</a> doğrudan kullanabilirsiniz.</p></noscript>
+  </section>
+
+  <section id="sonuc" aria-live="polite" aria-labelledby="sonucBaslik">
+    <h2 id="sonucBaslik"></h2>
+    <div class="alt" id="baglantilar"></div>
+    <iframe id="harita" title="Arama sonuçları haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+
+  <section class="info" id="nasil">
+    <h2>Nearadin.net nasıl çalışır?</h2>
+    <p>Nearadin.net, Türkiye genelinde işletme ve hizmet aramayı hızlandıran ücretsiz bir rehberdir. Kayıt ya da üyelik gerekmez.</p>
+    <div class="steps">
+      <div><h3>1. Ne aradığınızı yazın</h3><p>Restoran, usta, doktor, mağaza ya da aklınıza gelen herhangi bir hizmet.</p></div>
+      <div><h3>2. Şehir veya ilçe seçin</h3><p>Yazarken önerilen listeden il seçebilir, ilçe veya semt de yazabilirsiniz.</p></div>
+      <div><h3>3. Sonuçları karşılaştırın</h3><p>Harita üzerinde konumu, telefonu, yorumları ve çalışma saatlerini görün.</p></div>
+    </div>
+  </section>
+
+  <section class="info" id="sss">
+    <h2>Sık sorulan sorular</h2>
+    <details><summary>Nearadin.net ücretli mi?</summary><p>Hayır. Arama yapmak tamamen ücretsizdir.</p></details>
+    <details><summary>Sonuçlar nereden geliyor?</summary><p>Sonuçlar Google Haritalar üzerinden gösterilir; ayrıca Google ve Yandex Haritalar'da aynı aramayı tek tıkla açabilirsiniz.</p></details>
+    <details><summary>İlçe veya mahalle de arayabilir miyim?</summary><p>Evet. "Nerede?" alanına Kadıköy, Çankaya ya da bir mahalle adı yazmanız yeterlidir.</p></details>
+    <details><summary>Arama bağlantısını paylaşabilir miyim?</summary><p>Evet. Arama yaptıktan sonra adres çubuğundaki bağlantıyı kopyalayıp paylaşabilirsiniz.</p></details>
+  </section>
+</main>
+
+<footer>
+  <nav aria-label="Alt menü"><a href="#nasil">Nasıl çalışır?</a><a href="#sss">Sık sorulan sorular</a></nav>
+  <p>&copy; 2026 Nearadin.net - Tüm hakları saklıdır.</p>
+</footer>
+
+<datalist id="kategoriler"><option value="Restoran"><option value="Tesisatçı"><option value="Elektrikçi"><option value="Boyacı"><option value="Kuaför"><option value="Diş Hekimi"><option value="Eczane"><option value="Oto Servis"><option value="Çilingir"><option value="Nakliyat"><option value="Avukat"><option value="Kafe"><option value="Market"><option value="Otel"></datalist>
+<datalist id="sehirler"><option value="Adana"><option value="Adıyaman"><option value="Afyonkarahisar"><option value="Ağrı"><option value="Aksaray"><option value="Amasya"><option value="Ankara"><option value="Antalya"><option value="Ardahan"><option value="Artvin"><option value="Aydın"><option value="Balıkesir"><option value="Bartın"><option value="Batman"><option value="Bayburt"><option value="Bilecik"><option value="Bingöl"><option value="Bitlis"><option value="Bolu"><option value="Burdur"><option value="Bursa"><option value="Çanakkale"><option value="Çankırı"><option value="Çorum"><option value="Denizli"><option value="Diyarbakır"><option value="Düzce"><option value="Edirne"><option value="Elazığ"><option value="Erzincan"><option value="Erzurum"><option value="Eskişehir"><option value="Gaziantep"><option value="Giresun"><option value="Gümüşhane"><option value="Hakkari"><option value="Hatay"><option value="Iğdır"><option value="Isparta"><option value="İstanbul"><option value="İzmir"><option value="Kahramanmaraş"><option value="Karabük"><option value="Karaman"><option value="Kars"><option value="Kastamonu"><option value="Kayseri"><option value="Kırıkkale"><option value="Kırklareli"><option value="Kırşehir"><option value="Kilis"><option value="Kocaeli"><option value="Konya"><option value="Kütahya"><option value="Malatya"><option value="Manisa"><option value="Mardin"><option value="Mersin"><option value="Muğla"><option value="Muş"><option value="Nevşehir"><option value="Niğde"><option value="Ordu"><option value="Osmaniye"><option value="Rize"><option value="Sakarya"><option value="Samsun"><option value="Siirt"><option value="Sinop"><option value="Sivas"><option value="Şanlıurfa"><option value="Şırnak"><option value="Tekirdağ"><option value="Tokat"><option value="Trabzon"><option value="Tunceli"><option value="Uşak"><option value="Van"><option value="Yalova"><option value="Yozgat"><option value="Zonguldak"></datalist>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var neEl = $('ne'), neredeEl = $('nerede'), panel = $('sonuc'),
+      frame = $('harita'), links = $('baglantilar'), head = $('sonucBaslik'),
+      robots = $('robots');
+  var enc = encodeURIComponent;
+
+  function addLink(text, href) {
+    var a = document.createElement('a');
+    a.textContent = text; a.href = href; a.target = '_blank'; a.rel = 'noopener nofollow';
+    links.appendChild(a);
+  }
+
+  function goster(ne, nerede, scroll) {
+    var q = ne + ' ' + nerede;
+    head.textContent = nerede + ' bölgesinde "' + ne + '" sonuçları';
+    frame.src = 'https://www.google.com/maps?q=' + enc(q) + '&hl=tr&output=embed';
+    links.textContent = '';
+    addLink('Google Haritalar\'da aç', 'https://www.google.com/maps/search/?api=1&query=' + enc(q));
+    addLink('Google\'da ara', 'https://www.google.com/search?q=' + enc(q));
+    addLink('Yandex Haritalar\'da aç', 'https://yandex.com.tr/harita/?text=' + enc(q));
+    panel.style.display = 'block';
+    document.title = ne + ' ' + nerede + ' | Nearadin.net';
+    robots.content = 'noindex,follow'; // dinamik sonuç durumları dizine eklenmesin
+    if (scroll) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function sifirla() {
+    panel.style.display = 'none';
+    frame.removeAttribute('src');
+    document.title = 'Nearadin.net | Firma ve İşletme Rehberi: Ne Arıyorsunuz, Nerede?';
+    robots.content = 'index,follow,max-image-preview:large';
+  }
+
+  function ara(ne, nerede, push, scroll) {
+    ne = ne.trim().replace(/\s+/g, ' '); nerede = nerede.trim().replace(/\s+/g, ' ');
+    if (!ne || !nerede) return;
+    neEl.value = ne; neredeEl.value = nerede;
+    if (push) history.pushState(null, '', '/?ne=' + enc(ne) + '&nerede=' + enc(nerede));
+    goster(ne, nerede, scroll);
+  }
+
+  function urldenYukle(scroll) {
+    var p = new URLSearchParams(location.search);
+    var ne = p.get('ne'), nerede = p.get('nerede');
+    // Eski #/ne/nerede bağlantıları için geri uyumluluk
+    if (!ne && location.hash.indexOf('#/') === 0) {
+      var parts = location.hash.slice(2).split('/');
+      if (parts.length >= 2) {
+        try { ne = decodeURIComponent(parts[0]).replace(/-/g, ' '); nerede = decodeURIComponent(parts[1]).replace(/-/g, ' '); } catch (e) {}
+        if (ne && nerede) history.replaceState(null, '', '/?ne=' + enc(ne) + '&nerede=' + enc(nerede));
+      }
+    }
+    if (ne && nerede) ara(ne.slice(0, 80), nerede.slice(0, 80), false, scroll); else sifirla();
+  }
+
+  $('aramaForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    ara(neEl.value, neredeEl.value, true, true);
+  });
+
+  document.querySelector('.chips').addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-ne]');
+    if (!a) return;
+    e.preventDefault();
+    ara(a.dataset.ne, a.dataset.nerede, true, true);
+  });
+
+  window.addEventListener('popstate', function () { urldenYukle(false); });
+  urldenYukle(true);
+})();
+</script>
+
+<!-- Admatic AUTO ads START -->
+<ins data-publisher="adm-pub-342021502" data-ad-network="6938571fadda546eb28ca492" class="adm-ads-area"></ins>
+<script src="https://static.cdn.admatic.com.tr/showad/showad.min.js"></script>
 <!-- Admatic AUTO ads END -->
-
-    <header>
-        <div class="logo">
-            <a href="https://www.nearadin.net/" title="Nearadin.net Anasayfa">
-                <h1>Nearadin<span>.net</span></h1>
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero-section">
-            <h2>Aradığınız İşletme ve Hizmetler Tek Tıkla Elinizin Altında</h2>
-            <p>Ne aradığınızı ve nerede aradığınızı yazın, saniyeler içinde bulun.</p>
-            
-            <form id="bulurumForm" class="search-form" onsubmit="formAramaYap(event)">
-                <div class="search-input-group">
-                    <label for="neArama">Ne Arıyorsunuz?</label>
-                    <input type="text" id="neArama" placeholder="Örn: Yemek, Boya, Tesisatçı..." required>
-                </div>
-                <div class="search-input-group">
-                    <label for="neredeArama">Nerede?</label>
-                    <input type="text" id="neredeArama" placeholder="Örn: İstanbul, Kadıköy, Ankara..." required>
-                </div>
-                <div class="search-btn-container">
-                    <button type="submit">Ara</button>
-                </div>
-            </form>
-        </section>
-
-        <div class="results-container" id="sonucKutusu">
-            <iframe name="aramaSonuclari" id="aramaFrame" class="results-frame" title="Bulurum Arama Sonuçları"></iframe>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Nearadin.net - Tüm hakları saklıdır.</p>
-    </footer>
-
-    <script>
-        // Türkçe karakterleri ve boşlukları URL dostu slug haline getiren yardımcı fonksiyon
-        function slugify(text) {
-            var trMap = {
-                'ç': 'c', 'Ç': 'c', 'ğ': 'g', 'Ğ': 'g',
-                'ı': 'i', 'I': 'i', 'İ': 'i', 'ö': 'o',
-                'Ö': 'o', 'ş': 's', 'Ş': 's', 'ü': 'u', 'Ü': 'u'
-            };
-            for (var key in trMap) {
-                text = text.replace(new RegExp(key, 'g'), trMap[key]);
-            }
-            return text
-                .toLowerCase()
-                .replace(/[^a-z0-9 -]/g, '')
-                .replace(/\s+/g, '-')
-                .replace(/-+/g, '-');
-        }
-
-        // Form gönderildiğinde URL hash'ini günceller
-        function formAramaYap(event) {
-            event.preventDefault();
-            var ne = slugify(document.getElementById('neArama').value.trim());
-            var nerede = slugify(document.getElementById('neredeArama').value.trim());
-
-            if (ne && nerede) {
-                window.location.hash = '#/' + ne + '/' + nerede;
-            }
-        }
-
-        // URL'deki hash değiştiğinde veya sayfa doğrudan o URL ile yüklendiğinde aramayı çalıştırır
-        function yukleUrlAramasi() {
-            var hash = window.location.hash; // Örn: #/yemek/istanbul
-            if (hash && hash.startsWith('#/')) {
-                var parcalar = hash.replace('#/', '').split('/');
-                if (parcalar.length >= 2) {
-                    var ne = decodeURIComponent(parcalar[0]);
-                    var nerede = decodeURIComponent(parcalar[1]);
-
-                    // Form alanlarını doldur
-                    document.getElementById('neArama').value = ne;
-                    document.getElementById('neredeArama').value = nerede;
-
-                    // Bulurum URL'sine yönlendir
-                    var hedefUrl = "https://yandex.com.tr/search/touch/?text=" + encodeURIComponent(ne) + "/" + encodeURIComponent(nerede) + "/";
-                    
-                    var iframe = document.getElementById('aramaFrame');
-                    iframe.src = hedefUrl;
-
-                    var sonucKutusu = document.getElementById('sonucKutusu');
-                    sonucKutusu.style.display = 'block';
-                    sonucKutusu.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
-
-        // Sayfa yüklendiğinde ve hash değiştiğinde tetikle
-        window.addEventListener('load', yukleUrlAramasi);
-        window.addEventListener('hashchange', yukleUrlAramasi);
-    </script>
-
 </body>
 </html>

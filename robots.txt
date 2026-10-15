@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /detaylar/
 
-Sitemap: https://nearadin.net/sitemap.xml
+Sitemap: https://www.nearadin.net/sitemap.xml
