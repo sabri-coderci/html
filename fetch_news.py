@@ -155,7 +155,7 @@ footer a{margin:0 8px}
 
 
 def head(title, desc, path, extra="", noindex=False):
-    robots = "noindex,follow" if noindex else "index,follow,max-image-preview:large"
+    robots = "index,follow" if index else "index,follow,max-image-preview:large"
     return f"""<!DOCTYPE html>
 <html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
