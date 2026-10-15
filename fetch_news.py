@@ -154,8 +154,8 @@ footer a{margin:0 8px}
 """
 
 
-def head(title, desc, path, extra="", noindex=False):
-    robots = "index,follow" if index else "index,follow,max-image-preview:large"
+def head(title, desc, path, extra=""):
+    robots = "index,follow,max-image-preview:large"
     return f"""<!DOCTYPE html>
 <html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
@@ -208,7 +208,7 @@ def render_page(cat, city, items, today):
     ld = jsonld(crumbs_ld(crumbs)) + jsonld({
         "@context": "https://schema.org", "@type": "CollectionPage", "name": title, "url": SITE + path,
         "inLanguage": "tr-TR", "dateModified": today, "about": f"{city} {cl}"})
-    out = [head(title, desc, path, ld, noindex=not indexable)]
+    out = [head(title, desc, path, ld)]
     out.append(f'<p class="crumb"><a href="/">Ana sayfa</a> › <a href="/ara/{slugify(cat)}/">{esc(cat)}</a> › {esc(city)}</p>')
     out.append(f'<section class="card"><h1>{esc(city)} {esc(cat)}</h1>'
                f"<p>{esc(city)} bölgesinde {esc(cl)} arayanlar için harita, hızlı arama bağlantıları ve bölgeyle ilgili güncel haberler. "
