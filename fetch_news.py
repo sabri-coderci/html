@@ -55,7 +55,7 @@ CITIES = [
     "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Şanlıurfa", "Şırnak", "Tekirdağ", "Tokat",
     "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak",
 ]
-TOP_CITIES = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Konya", "Gaziantep"]
+TOP_CITIES = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Konya", "Gaziantep","Van","Diyarbakır"]
 
 ICONS = {
     "Restoran": "🍽️", "Tesisatçı": "🔧", "Elektrikçi": "💡", "Boyacı": "🎨", "Kuaför": "💇", "Berber": "💈",
