@@ -40,7 +40,9 @@ CATEGORIES = [
     "Diş Hekimi", "Eczane", "Veteriner", "Oto Servis", "Çilingir", "Nakliyat",
     "Avukat", "Kafe", "Market", "Otel", "Klima Servisi", "Halı Yıkama",
     "Güzellik Salonu", "Temizlik Şirketi","PTT","Belediye","Kaymakamlık","Valilik",
-    "Noter","Playstation","Petshop","Otel","Öğretmen Evi","Polis Evi"
+    "Noter","Playstation","Petshop","Otel","Öğretmen Evi","Polis Evi", "Stadyum", "Okul",
+    "Petshop", "Kuaför", "Berber", "Bar", "Çiçekçi", "Bim", "A101", "Şok", "Piknik Alanı", 
+    "ATM", "Banka"
 ]
 CATEGORIES = list(dict.fromkeys(CATEGORIES))  # tekrarları (ör. Otel) temizle
 CITIES = [
