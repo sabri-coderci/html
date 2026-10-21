@@ -210,7 +210,7 @@ def head(title, desc, path, extra="", css="", top=""):
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{SITE}{path}">
 <meta property="og:image" content="{SITE}/og-image.png"><meta name="twitter:card" content="summary_large_image">
 {extra}<style>{CSS}{css}</style></head><body>
-{header_html()}{top}
+{header_html()}{top}{WAUST}
 <main>"""
 
 
@@ -375,7 +375,7 @@ def render_home(cache, today):
         extra_head = (ROOT / "data" / "home_head_extra.html").read_text(encoding="utf-8")
     except Exception:
         extra_head = ""
-    out = [head(title, desc, "/", ld + extra_head, HOME_CSS, WAUST)]
+    out = [head(title, desc, "/", ld + extra_head, HOME_CSS,)]
     opt_c = "".join(f'<option value="{slugify(c)}">{icon(c)} {esc(c)}</option>' for c in CATEGORIES)
     opt_s = "".join(f'<option value="{slugify(c)}">{esc(c)}</option>' for c in CITIES)
     pop = "".join(f'<a href="/sehir/{slugify(c)}/">{esc(c)}</a>' for c in TOP_CITIES)
