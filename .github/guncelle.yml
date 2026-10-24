@@ -1,41 +1,24 @@
-name: Nearadin sayfalarını güncelle
-
+name: Haberleri Güncelle
 on:
   schedule:
-    - cron: "0 4 * * *"   # her gün 04:00 UTC (07:00 TR)
-  workflow_dispatch:       # Actions sekmesinden elle de çalıştırılabilir
-
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
 permissions:
   contents: write
-
-concurrency:
-  group: guncelle
-  cancel-in-progress: false
-
 jobs:
-  build:
+  guncelle:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: ana
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Sayfaları üret
-        run: python fetch_news.py
-        env:
-          MAX_FETCH: "400"
-
-      - name: Değişiklikleri kaydet
+      - run: python fetch_news.py
+      - name: Değişiklik varsa commit et
         run: |
-          git config user.name "nearadin-bot"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "haber-bot"
+          git config user.email "bot@nearadin.net"
           git add -A
-          if git diff --cached --quiet; then
-            echo "Değişiklik yok."
-          else
-            git commit -m "Otomatik güncelleme $(date -u +%Y-%m-%d)"
-            git push
-          fi
+          git diff --cached --quiet || (git commit -m "Otomatik haber güncellemesi" && git push origin ana)
