@@ -2,7 +2,7 @@ import os
 import requests
 
 # API anahtarını çevre değişkeninden alıyoruz (Varsayılan olarak kendi anahtarınız ekli)
-API_KEY = os.getenv("XRANKS_API_KEY", "acemsyzbkkckzrnupuldoqfkdkgdavfdhnpimznv")
+API_KEY = os.getenv("XRANKS_API_KEY")
 DOMAIN_TO_CHECK = "nearadin.net"
 
 url = "https://xranks.com/api/v1/domain/category"
