@@ -1,83 +1,125 @@
-<!DOCTYPE html>
-<html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nearadin.net - Türkiye&#x27;de İşletme ve Hizmet Rehberi | 81 İl, Harita ve Haberler</title><meta name="description" content="Türkiye&#x27;nin 81 ilinde restoran, tesisatçı, kuaför, eczane ve daha fazlasını harita üzerinde bulun. İl ve kategori seçin, bölgeyle ilgili güncel haberleri okuyun.">
-<meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#0056b3">
-<link rel="canonical" href="https://www.nearadin.net/">
-<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="Nearadin.net">
-<meta property="og:title" content="Nearadin.net - Türkiye&#x27;de İşletme ve Hizmet Rehberi | 81 İl, Harita ve Haberler"><meta property="og:description" content="Türkiye&#x27;nin 81 ilinde restoran, tesisatçı, kuaför, eczane ve daha fazlasını harita üzerinde bulun. İl ve kategori seçin, bölgeyle ilgili güncel haberleri okuyun."><meta property="og:url" content="https://www.nearadin.net/">
-<meta property="og:image" content="https://www.nearadin.net/og-image.png"><meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Nearadin.net", "url": "https://www.nearadin.net/", "inLanguage": "tr-TR", "description": "Türkiye'nin 81 ilinde restoran, tesisatçı, kuaför, eczane ve daha fazlasını harita üzerinde bulun. İl ve kategori seçin, bölgeyle ilgili güncel haberleri okuyun."}</script>
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nearadin.net — Ne ararsan, adın burada | Haber, Teknoloji, Sağlık, Yaşam</title>
+<meta name="description" content="nearadin.net: Türkiye'nin gündemi tek sayfada. Haber, ekonomi, teknoloji, sağlık, yaşam, spor ve daha fazlası canlı akışla.">
+<link rel="canonical" href="https://nearadin.net/">
+<meta property="og:title" content="nearadin.net — Ne ararsan, adın burada">
+<meta property="og:description" content="Haber, teknoloji, sağlık, yaşam ve daha fazlası tek akışta.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nearadin.net/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--p:#0056b3;--a:#c24e00;--bg:#f6f8fb;--t:#1f2933;--m:#52606d;--l:#dbe3ec}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
-a{color:var(--p)}:focus-visible{outline:3px solid #ff6600;outline-offset:2px}
-header.top{background:#fff;border-bottom:1px solid var(--l);position:sticky;top:0;z-index:50}
-.bar{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 15px}
-.burger{width:44px;height:44px;border:1px solid var(--l);border-radius:10px;background:#fff;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 11px}
-.burger span{display:block;height:3px;background:var(--p);border-radius:2px;transition:transform .25s,opacity .25s}
-.burger[aria-expanded=true] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
-.burger[aria-expanded=true] span:nth-child(2){opacity:0}
-.burger[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-.bar-cta{font-weight:600;font-size:.9rem;text-decoration:none;padding:8px 14px;border-radius:99px;background:#eef5fd}
-.menu{max-height:0;overflow:hidden;transition:max-height .3s;background:#fff}
-.menu.open{max-height:80vh;overflow:auto;border-top:1px solid var(--l)}
-.menu-in{max-width:1000px;margin:auto;padding:8px 15px 14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:4px}
-.menu-in a{padding:10px 12px;border-radius:8px;text-decoration:none;font-weight:600;color:var(--t)}
-.menu-in a:hover{background:#eef5fd}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.cat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;border:1px solid var(--l);border-radius:14px;background:#fff;text-decoration:none;color:var(--t);font-weight:600;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s}
-.cat:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,86,179,.15);border-color:var(--p)}
-.cat b{font-size:2rem;line-height:1}
-.logo{font-size:1.8rem;font-weight:800;color:var(--p);text-decoration:none}.logo span{color:#ff6600}
-main{max-width:1000px;margin:22px auto;padding:0 15px}
-.crumb{font-size:.9rem;color:var(--m);margin-bottom:12px}
-.card{background:#fff;border:1px solid var(--l);border-radius:12px;padding:22px;margin-bottom:20px}
-h1{font-size:1.7rem;line-height:1.25;color:#17324d;margin-bottom:8px}
-h2{font-size:1.25rem;color:#17324d;margin-bottom:10px}
-p{max-width:72ch;margin-bottom:10px;color:#3e4c59}
-.alt{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.alt a,.tags a{padding:7px 14px;border-radius:6px;background:#eef5fd;text-decoration:none;font-weight:600;font-size:.9rem}
-.tags{display:flex;flex-wrap:wrap;gap:8px}.tags a{font-weight:500;border-radius:99px;border:1px solid var(--l);background:#fff}
-iframe{display:block;width:100%;height:60vh;min-height:380px;border:0;border-radius:8px;margin-top:8px}
-ul.news{list-style:none}ul.news li{padding:10px 0;border-top:1px solid var(--l)}
-ul.news small{display:block;color:var(--m)}
-footer{padding:22px 15px;text-align:center;color:#616e7c;font-size:.9rem;background:#fff;border-top:1px solid var(--l)}
-footer a{margin:0 8px}
-
-.hero{background:#0b3d75;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:34px 34px;color:#fff;border-radius:18px;padding:38px 20px;margin-bottom:22px;text-align:center}
-.hero h1{color:#fff;font-size:2.1rem;max-width:20ch;margin:0 auto 10px}
-.hero p{color:#dbe9f8;margin:0 auto 20px}
-.sel{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;max-width:780px;margin:auto;background:#fff;padding:10px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.sel select,.sel button{height:52px;border-radius:10px;border:1px solid var(--l);font-size:1rem;padding:0 12px;background:#fff;color:var(--t)}
-.sel button{background:#ff6600;border-color:#ff6600;color:#fff;font-weight:700;cursor:pointer;padding:0 28px}
-.sel button:hover{background:#e55a00}
-.pop{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.pop a{background:rgba(255,255,255,.16);color:#fff;border-radius:99px;padding:6px 14px;text-decoration:none;font-size:.88rem}
-.pop a:hover{background:rgba(255,255,255,.3)}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.step{background:#eef5fd;border-radius:12px;padding:16px}.step b{font-size:1.6rem}
-.cnt{text-align:center;padding:6px 0}
-.mapf{display:flex;flex-wrap:wrap;gap:8px}
-.mapf input{flex:1 1 180px;height:46px;border:1px solid var(--l);border-radius:10px;padding:0 12px;font-size:1rem}
-.mapf button{height:46px;border:0;border-radius:10px;background:var(--p);color:#fff;font-weight:700;padding:0 22px;cursor:pointer}
-@media(max-width:640px){.sel{grid-template-columns:1fr}.hero h1{font-size:1.55rem}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style></head><body>
-<header class="top"><div class="bar"><button class="burger" id="bb" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button><a class="logo" href="/" title="Nearadin.net ana sayfa">Nearadin<span>.net</span></a><a class="bar-cta" href="/ara/">Kategoriler</a></div><nav class="menu" id="nav" aria-label="Ana menü"><div class="menu-in"><a href="/">🏠 Ana sayfa</a><a href="/ara/">📂 Tüm kategoriler</a><a href="/sehir/">📍 Tüm şehirler</a><a href="/ara/restoran/">🍽️ Restoran</a><a href="/ara/tesisatci/">🔧 Tesisatçı</a><a href="/ara/elektrikci/">💡 Elektrikçi</a><a href="/ara/boyaci/">🎨 Boyacı</a><a href="/ara/kuafor/">💇 Kuaför</a><a href="/ara/berber/">💈 Berber</a><a href="/ara/dis-hekimi/">🦷 Diş Hekimi</a><a href="/ara/eczane/">💊 Eczane</a><a href="/#harita">🗺️ Haritada ara</a></div></nav></header><div class="cnt"><script id="_waugih">var _wau = _wau || []; _wau.push(["dynamic", "ghv145c8aq", "gih", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script></div>
-<main><section class="hero"><h1>Aradığınız işletme bir tık uzağınızda</h1><p>İlinizi ve kategoriyi seçin; harita, yorumlar ve güncel haberler tek sayfada.</p><div class="sel"><select id="sc" aria-label="Kategori seçin"><option value="">Kategori seçin</option><option value="restoran">🍽️ Restoran</option><option value="tesisatci">🔧 Tesisatçı</option><option value="elektrikci">💡 Elektrikçi</option><option value="boyaci">🎨 Boyacı</option><option value="kuafor">💇 Kuaför</option><option value="berber">💈 Berber</option><option value="dis-hekimi">🦷 Diş Hekimi</option><option value="eczane">💊 Eczane</option><option value="veteriner">🐾 Veteriner</option><option value="oto-servis">🚗 Oto Servis</option><option value="cilingir">🔑 Çilingir</option><option value="nakliyat">🚚 Nakliyat</option><option value="avukat">⚖️ Avukat</option><option value="kafe">☕ Kafe</option><option value="market">🛒 Market</option><option value="otel">🏨 Otel</option><option value="klima-servisi">❄️ Klima Servisi</option><option value="hali-yikama">🧺 Halı Yıkama</option><option value="guzellik-salonu">💅 Güzellik Salonu</option><option value="temizlik-sirketi">🧹 Temizlik Şirketi</option><option value="ptt">📮 PTT</option><option value="belediye">🏛️ Belediye</option><option value="kaymakamlik">🏢 Kaymakamlık</option><option value="valilik">🏢 Valilik</option><option value="noter">📜 Noter</option><option value="playstation">🎮 Playstation</option><option value="petshop">🐶 Petshop</option><option value="ogretmen-evi">🎓 Öğretmen Evi</option><option value="polis-evi">🛡️ Polis Evi</option><option value="stadyum">📍 Stadyum</option><option value="okul">📍 Okul</option><option value="bar">📍 Bar</option><option value="cicekci">📍 Çiçekçi</option><option value="bim">📍 Bim</option><option value="a101">📍 A101</option><option value="sok">📍 Şok</option><option value="piknik-alani">📍 Piknik Alanı</option><option value="atm">📍 ATM</option><option value="banka">📍 Banka</option></select><select id="ss" aria-label="İl seçin"><option value="">İl seçin</option><option value="adana">Adana</option><option value="adiyaman">Adıyaman</option><option value="afyonkarahisar">Afyonkarahisar</option><option value="agri">Ağrı</option><option value="aksaray">Aksaray</option><option value="amasya">Amasya</option><option value="ankara">Ankara</option><option value="antalya">Antalya</option><option value="ardahan">Ardahan</option><option value="artvin">Artvin</option><option value="aydin">Aydın</option><option value="balikesir">Balıkesir</option><option value="bartin">Bartın</option><option value="batman">Batman</option><option value="bayburt">Bayburt</option><option value="bilecik">Bilecik</option><option value="bingol">Bingöl</option><option value="bitlis">Bitlis</option><option value="bolu">Bolu</option><option value="burdur">Burdur</option><option value="bursa">Bursa</option><option value="canakkale">Çanakkale</option><option value="cankiri">Çankırı</option><option value="corum">Çorum</option><option value="denizli">Denizli</option><option value="diyarbakir">Diyarbakır</option><option value="duzce">Düzce</option><option value="edirne">Edirne</option><option value="elazig">Elazığ</option><option value="erzincan">Erzincan</option><option value="erzurum">Erzurum</option><option value="eskisehir">Eskişehir</option><option value="gaziantep">Gaziantep</option><option value="giresun">Giresun</option><option value="gumushane">Gümüşhane</option><option value="hakkari">Hakkari</option><option value="hatay">Hatay</option><option value="igdir">Iğdır</option><option value="isparta">Isparta</option><option value="istanbul">İstanbul</option><option value="izmir">İzmir</option><option value="kahramanmaras">Kahramanmaraş</option><option value="karabuk">Karabük</option><option value="karaman">Karaman</option><option value="kars">Kars</option><option value="kastamonu">Kastamonu</option><option value="kayseri">Kayseri</option><option value="kirikkale">Kırıkkale</option><option value="kirklareli">Kırklareli</option><option value="kirsehir">Kırşehir</option><option value="kilis">Kilis</option><option value="kocaeli">Kocaeli</option><option value="konya">Konya</option><option value="kutahya">Kütahya</option><option value="malatya">Malatya</option><option value="manisa">Manisa</option><option value="mardin">Mardin</option><option value="mersin">Mersin</option><option value="mugla">Muğla</option><option value="mus">Muş</option><option value="nevsehir">Nevşehir</option><option value="nigde">Niğde</option><option value="ordu">Ordu</option><option value="osmaniye">Osmaniye</option><option value="rize">Rize</option><option value="sakarya">Sakarya</option><option value="samsun">Samsun</option><option value="siirt">Siirt</option><option value="sinop">Sinop</option><option value="sivas">Sivas</option><option value="sanliurfa">Şanlıurfa</option><option value="sirnak">Şırnak</option><option value="tekirdag">Tekirdağ</option><option value="tokat">Tokat</option><option value="trabzon">Trabzon</option><option value="tunceli">Tunceli</option><option value="usak">Uşak</option><option value="van">Van</option><option value="yalova">Yalova</option><option value="yozgat">Yozgat</option><option value="zonguldak">Zonguldak</option></select><button id="go" type="button">Ara</button></div><div class="pop"><a href="/sehir/istanbul/">İstanbul</a><a href="/sehir/ankara/">Ankara</a><a href="/sehir/izmir/">İzmir</a><a href="/sehir/bursa/">Bursa</a><a href="/sehir/antalya/">Antalya</a><a href="/sehir/adana/">Adana</a><a href="/sehir/konya/">Konya</a><a href="/sehir/gaziantep/">Gaziantep</a><a href="/sehir/van/">Van</a><a href="/sehir/diyarbakir/">Diyarbakır</a></div></section><section class="card"><h2>Kategoriler</h2><div class="grid"><a class="cat" href="/ara/restoran/"><b>🍽️</b>Restoran</a><a class="cat" href="/ara/tesisatci/"><b>🔧</b>Tesisatçı</a><a class="cat" href="/ara/elektrikci/"><b>💡</b>Elektrikçi</a><a class="cat" href="/ara/boyaci/"><b>🎨</b>Boyacı</a><a class="cat" href="/ara/kuafor/"><b>💇</b>Kuaför</a><a class="cat" href="/ara/berber/"><b>💈</b>Berber</a><a class="cat" href="/ara/dis-hekimi/"><b>🦷</b>Diş Hekimi</a><a class="cat" href="/ara/eczane/"><b>💊</b>Eczane</a><a class="cat" href="/ara/veteriner/"><b>🐾</b>Veteriner</a><a class="cat" href="/ara/oto-servis/"><b>🚗</b>Oto Servis</a><a class="cat" href="/ara/cilingir/"><b>🔑</b>Çilingir</a><a class="cat" href="/ara/nakliyat/"><b>🚚</b>Nakliyat</a><a class="cat" href="/ara/avukat/"><b>⚖️</b>Avukat</a><a class="cat" href="/ara/kafe/"><b>☕</b>Kafe</a><a class="cat" href="/ara/market/"><b>🛒</b>Market</a><a class="cat" href="/ara/otel/"><b>🏨</b>Otel</a><a class="cat" href="/ara/klima-servisi/"><b>❄️</b>Klima Servisi</a><a class="cat" href="/ara/hali-yikama/"><b>🧺</b>Halı Yıkama</a><a class="cat" href="/ara/guzellik-salonu/"><b>💅</b>Güzellik Salonu</a><a class="cat" href="/ara/temizlik-sirketi/"><b>🧹</b>Temizlik Şirketi</a><a class="cat" href="/ara/ptt/"><b>📮</b>PTT</a><a class="cat" href="/ara/belediye/"><b>🏛️</b>Belediye</a><a class="cat" href="/ara/kaymakamlik/"><b>🏢</b>Kaymakamlık</a><a class="cat" href="/ara/valilik/"><b>🏢</b>Valilik</a><a class="cat" href="/ara/noter/"><b>📜</b>Noter</a><a class="cat" href="/ara/playstation/"><b>🎮</b>Playstation</a><a class="cat" href="/ara/petshop/"><b>🐶</b>Petshop</a><a class="cat" href="/ara/ogretmen-evi/"><b>🎓</b>Öğretmen Evi</a><a class="cat" href="/ara/polis-evi/"><b>🛡️</b>Polis Evi</a><a class="cat" href="/ara/stadyum/"><b>📍</b>Stadyum</a><a class="cat" href="/ara/okul/"><b>📍</b>Okul</a><a class="cat" href="/ara/bar/"><b>📍</b>Bar</a><a class="cat" href="/ara/cicekci/"><b>📍</b>Çiçekçi</a><a class="cat" href="/ara/bim/"><b>📍</b>Bim</a><a class="cat" href="/ara/a101/"><b>📍</b>A101</a><a class="cat" href="/ara/sok/"><b>📍</b>Şok</a><a class="cat" href="/ara/piknik-alani/"><b>📍</b>Piknik Alanı</a><a class="cat" href="/ara/atm/"><b>📍</b>ATM</a><a class="cat" href="/ara/banka/"><b>📍</b>Banka</a></div></section><section class="card"><h2>Güncel haberler</h2><ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPdlE3UXoyY1dkYTI4LU1FMEJVWXlvT1ZId3hwWnc4REVEZlNBa0k3WGZDWURYeG42VEdWMi1Ja20yRXozc3hPMWNQdzcyMUloYzV0em5TQ0hmQ3RHVUw2bEZQTVJTeU16Q0xJbXRSQmhyN0p6aWoyZGJBeV9lcHdBNkNzOVlUdjVkeVN3cFRoWGEyLTU2Y1JhTWJaZjUzVzBFNGlUSEkyRXVZR3VLSDE0Mm5ZM2otU29yYU14U1BUYThHLTU2YjY4TXEzcTM4RHNGNjhLUllXWQ?oc=5" target="_blank" rel="noopener nofollow">TOGÜ Hastanesine 10 Yeni Hekim Kadrosu! Rektör Yılmaz&#x27;dan Bakan Memişoğlu&#x27;na ve Tokat Milletvekillerine Teşekkür</a><small>Tokat diş hekimi · Hürsöz Gazetesi · 24.10.2026</small></li><li><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNNWZYUmRrTUZqRUZTS196RktDU2NUdXl5U2RHX1pCSWs2Si1wQk54RkU2WkNJVEhuX2U0LWczbXdPOW9qUlF1NS10UXU5ekU0bGJiTU9WQS1kejVZTEFBaHlJWEdoU3pWME9faEZub2IzYS14cHEyYVQwMVJFb1BnazJxVk00Y19seHQ4M1RscTZua3pOUUpkS2J2SzFyQkQ4QS1CU1B6NA?oc=5" target="_blank" rel="noopener nofollow">Sivas’ta 24 Ekim Cumartesi Günü Nöbetçi Eczaneler Belli Oldu</a><small>Sivas eczane · sivas360.com · 24.10.2026</small></li><li><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOUDB6TzhjejZyVnIwZTBPNHZsWjZTeFlnejg3cFlHeHJmeVQ5OFMyVHB5NHE0Mkdzd3NPTm9CYXZZWDl5bGV5eUxKYU5mb3AwNVRIdTJRYlhxLXZsRnIzdVUyXzlhWTRic2NQbnVvZkM4ZkloSHc2aXJQRlJCNDVXV0hrSjBrMzZPSmF6elc5RTQxRXpUa0x6TUNDU2l1blhSUExYQmdBcw?oc=5" target="_blank" rel="noopener nofollow">Kahramanmaraş&#x27;ta 230 Hayvana Kuduz Aşısı! 60 Hayvana Mikroçip Takıldı</a><small>Kahramanmaraş veteriner · Kangal Gündem · 24.10.2026</small></li><li><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxQaW9wbzhTTHV0blphWXdXQmdvWkRkZTB4WWxfYjJ4UENsQnJ0dVZrUXpMa2ltQm02WTU0Y0RBUU5KRzZ5ajJsLWdtM1lCY2dSXzNCZjViX2tlcUNnV1p2d04wN28zUUVuV25NdGRqcGFqZUVkVHI5WUdxZ0hWMFJ4SmRabW5wdV9GN0N1OERMX3Z4Zksxb2s2WTVwUWpMNUp1TnFOOVdySWl6VVZlZEdzS0cwb1hqOS1jV3BoSHNsMC0zZFVFYnB2OERzRWRqelBSM1dHd2tn?oc=5" target="_blank" rel="noopener nofollow">OMÜ’de hayvanların anatomik yapıları üç boyutlu yazıcıyla üretiliyor, eğitimde kullanılıyor İhlas Haber Ajansı</a><small>Samsun veteriner · İhlas Haber Ajansı · 24.10.2026</small></li><li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOS3dYNEwzRHM0RXZCVXNUeFhOYm5MNWRHcTFuTzRDWE0yRnVyTUhSaVR1S3Z6Y19qbV9ETVdoenRQcWVfYnRsQkd1cnBHYmV0LVd5QzZCTDlHdXpTRmRvVFpzT09hZzVGVjNsbjJBMzRTa3VqN1M1aUdUcGlwQ0duQmVMam1TN3o0TzVnMUxzVmtmbDBTSlE?oc=5" target="_blank" rel="noopener nofollow">Veteriner Hekimliği Öğrencileri Beyaz Önlüklerini Giydi</a><small>Hatay diş hekimi · Hatay Ekspres · 24.10.2026</small></li><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOOWdVWXBHUFJZZGwxR2ZZZ0E4V3JOcXRQM0hqWjI5ZzJ0Uk9IeUNRVjNaYWJpWUJDZldjX05RdDJSQnVwVGFuWE12ZV9NSlJBcFk4MnhLMUZjS1JuZko1alZ6UkZDYndTaXI5WmRaeWlVQmxONDJKTDk2dkQzVTdhbHlYNHdxV04xTFYyMVJYMmh6aERPRndFam04a3DSAZwBQVVfeXFMTjlnVVlwR1BSWWRsMUdmWWdBOFdyTnF0UDNIaloyOWcydFJPSHlDUVYzWmFiaVlCQ2ZXY19OUXQyUkJ1cFRhblhNdmVfTUpSQXBZODJ4SzFGY0tSbmZKNWpWelJGQ2J3U2lyOVpkWnlpVUJsTjQySkw5NnZEM1U3YWx5WDR3cVdOMUxWMjFSWDJoemhET0Z3RWptOGtw?oc=5" target="_blank" rel="noopener nofollow">Van&#x27;da 60 dönümlük bahçede soğuk hava nedeniyle üretim 300 tondan 50-60 tona indi</a><small>Van diş hekimi · Son Dakika · 24.10.2026</small></li></ul></section><section class="card" id="iller"><h2>81 il, tek yerde</h2><p>Bir il seçin, o ildeki tüm hizmetleri görün.</p><div class="tags"><a href="/sehir/adana/">Adana</a><a href="/sehir/adiyaman/">Adıyaman</a><a href="/sehir/afyonkarahisar/">Afyonkarahisar</a><a href="/sehir/agri/">Ağrı</a><a href="/sehir/aksaray/">Aksaray</a><a href="/sehir/amasya/">Amasya</a><a href="/sehir/ankara/">Ankara</a><a href="/sehir/antalya/">Antalya</a><a href="/sehir/ardahan/">Ardahan</a><a href="/sehir/artvin/">Artvin</a><a href="/sehir/aydin/">Aydın</a><a href="/sehir/balikesir/">Balıkesir</a><a href="/sehir/bartin/">Bartın</a><a href="/sehir/batman/">Batman</a><a href="/sehir/bayburt/">Bayburt</a><a href="/sehir/bilecik/">Bilecik</a><a href="/sehir/bingol/">Bingöl</a><a href="/sehir/bitlis/">Bitlis</a><a href="/sehir/bolu/">Bolu</a><a href="/sehir/burdur/">Burdur</a><a href="/sehir/bursa/">Bursa</a><a href="/sehir/canakkale/">Çanakkale</a><a href="/sehir/cankiri/">Çankırı</a><a href="/sehir/corum/">Çorum</a><a href="/sehir/denizli/">Denizli</a><a href="/sehir/diyarbakir/">Diyarbakır</a><a href="/sehir/duzce/">Düzce</a><a href="/sehir/edirne/">Edirne</a><a href="/sehir/elazig/">Elazığ</a><a href="/sehir/erzincan/">Erzincan</a><a href="/sehir/erzurum/">Erzurum</a><a href="/sehir/eskisehir/">Eskişehir</a><a href="/sehir/gaziantep/">Gaziantep</a><a href="/sehir/giresun/">Giresun</a><a href="/sehir/gumushane/">Gümüşhane</a><a href="/sehir/hakkari/">Hakkari</a><a href="/sehir/hatay/">Hatay</a><a href="/sehir/igdir/">Iğdır</a><a href="/sehir/isparta/">Isparta</a><a href="/sehir/istanbul/">İstanbul</a><a href="/sehir/izmir/">İzmir</a><a href="/sehir/kahramanmaras/">Kahramanmaraş</a><a href="/sehir/karabuk/">Karabük</a><a href="/sehir/karaman/">Karaman</a><a href="/sehir/kars/">Kars</a><a href="/sehir/kastamonu/">Kastamonu</a><a href="/sehir/kayseri/">Kayseri</a><a href="/sehir/kirikkale/">Kırıkkale</a><a href="/sehir/kirklareli/">Kırklareli</a><a href="/sehir/kirsehir/">Kırşehir</a><a href="/sehir/kilis/">Kilis</a><a href="/sehir/kocaeli/">Kocaeli</a><a href="/sehir/konya/">Konya</a><a href="/sehir/kutahya/">Kütahya</a><a href="/sehir/malatya/">Malatya</a><a href="/sehir/manisa/">Manisa</a><a href="/sehir/mardin/">Mardin</a><a href="/sehir/mersin/">Mersin</a><a href="/sehir/mugla/">Muğla</a><a href="/sehir/mus/">Muş</a><a href="/sehir/nevsehir/">Nevşehir</a><a href="/sehir/nigde/">Niğde</a><a href="/sehir/ordu/">Ordu</a><a href="/sehir/osmaniye/">Osmaniye</a><a href="/sehir/rize/">Rize</a><a href="/sehir/sakarya/">Sakarya</a><a href="/sehir/samsun/">Samsun</a><a href="/sehir/siirt/">Siirt</a><a href="/sehir/sinop/">Sinop</a><a href="/sehir/sivas/">Sivas</a><a href="/sehir/sanliurfa/">Şanlıurfa</a><a href="/sehir/sirnak/">Şırnak</a><a href="/sehir/tekirdag/">Tekirdağ</a><a href="/sehir/tokat/">Tokat</a><a href="/sehir/trabzon/">Trabzon</a><a href="/sehir/tunceli/">Tunceli</a><a href="/sehir/usak/">Uşak</a><a href="/sehir/van/">Van</a><a href="/sehir/yalova/">Yalova</a><a href="/sehir/yozgat/">Yozgat</a><a href="/sehir/zonguldak/">Zonguldak</a></div></section><section class="card"><h2>Nasıl çalışır?</h2><div class="steps"><div class="step"><b>📂</b><p><strong>Kategori seçin</strong><br>Restoran, tesisatçı, eczane ve daha fazlası.</p></div><div class="step"><b>📍</b><p><strong>İlinizi seçin</strong><br>81 ilden birini belirleyin.</p></div><div class="step"><b>🗺️</b><p><strong>Haritada bulun</strong><br>Konum, telefon ve çalışma saatleri için işletmeye tıklayın.</p></div></div></section><section class="card" id="harita"><h2>İlçe veya mahalle ara</h2><p>Daha dar bir bölge için ne aradığınızı ve nerede aradığınızı yazın.</p><div class="mapf"><input id="ne" placeholder="Ne? (ör. eczane)" aria-label="Ne arıyorsunuz"><input id="nr" placeholder="Nerede? (ör. Çankaya, Ankara)" aria-label="Nerede"><button id="mb" type="button">Haritada göster</button></div><iframe id="mf" title="Arama haritası" style="display:none" loading="lazy" allowfullscreen></iframe></section></main>
-<footer><nav aria-label="Alt menü"><a href="/">Ana sayfa</a><a href="/ara/">Tüm kategoriler</a><a href="/sehir/">Tüm şehirler</a></nav>
-<p>&copy; 2026 Nearadin.net - Tüm hakları saklıdır.</p></footer>
-<script>(function(){var b=document.getElementById('bb'),m=document.getElementById('nav');if(!b)return;
-b.onclick=function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)};
-m.addEventListener('click',function(e){if(e.target.tagName=='A')m.classList.remove('open')})})();</script>
-<script>(function(){
-var C=document.getElementById('sc'),S=document.getElementById('ss'),$=function(i){return document.getElementById(i)};
-$('go').onclick=function(){var c=C.value,s=S.value;location.href=c&&s?'/ara/'+c+'/'+s+'/':c?'/ara/'+c+'/':s?'/sehir/'+s+'/':'/ara/'};
-function show(ne,nr){var q=encodeURIComponent((ne+' '+nr).trim());if(!q)return;var f=$('mf');
-f.src='https://www.google.com/maps?q='+q+'&hl=tr&output=embed';f.style.display='block'}
-$('mb').onclick=function(){show($('ne').value,$('nr').value)};
-var p=new URLSearchParams(location.search),ne=p.get('ne')||'',nr=p.get('nerede')||'';
-if(ne||nr){$('ne').value=ne;$('nr').value=nr;show(ne,nr);$('harita').scrollIntoView()}
-})();</script>
-</body></html>
+*{box-sizing:border-box}
+body{margin:0;background:#0B0B0F;font-family:'Space Grotesk',system-ui,sans-serif;color:#F5F5F0;overflow-x:hidden}
+.d{font-family:'Unbounded',system-ui,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.mqbox{background:#D7FF3A;color:#0B0B0F;overflow:hidden;white-space:nowrap;border-bottom:3px solid #0B0B0F}
+.mq{display:flex;width:max-content;animation:mq 90s linear infinite}
+.mq span{font:800 13px 'Unbounded',sans-serif;padding:12px 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq{animation:none}}
+header .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-.03em;text-decoration:none;color:#F5F5F0}
+nav{display:flex;flex-wrap:wrap;gap:20px;font-weight:700}
+a{color:#D7FF3A}a:hover{color:#FF6BD6}nav a{text-decoration:none}
+.hero{display:flex;flex-wrap:wrap;gap:40px;padding-top:40px;padding-bottom:56px}
+.hero>div{flex:1 1 380px;min-width:0}
+h1{margin:0;font-size:clamp(48px,9vw,128px);line-height:.92;font-weight:900;letter-spacing:-.05em}
+.lead{font-size:21px;line-height:1.5;color:#C9C9D2;max-width:560px;margin:24px 0}
+.hot{background:#FF6BD6;color:#0B0B0F;border:3px solid #F5F5F0;border-radius:28px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:10px 10px 0 #D7FF3A;min-height:380px;text-decoration:none}
+.hot:hover{color:#0B0B0F}
+.hot .t{font-size:clamp(24px,3.2vw,38px);line-height:1.15;font-weight:900;letter-spacing:-.02em}
+.tag{display:inline-block;padding:4px 12px;border-radius:999px;font:700 12px 'Space Grotesk',sans-serif;color:#0B0B0F;letter-spacing:.04em;text-transform:uppercase}
+.tag.k{background:#0B0B0F;color:#F5F5F0}
+.btn{font:800 16px 'Unbounded',sans-serif;min-height:56px;padding:0 32px;border:3px solid #0B0B0F;background:#D7FF3A;color:#0B0B0F;border-radius:14px;cursor:pointer;box-shadow:5px 5px 0 #FF6BD6;display:inline-flex;align-items:center;text-decoration:none}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #FF6BD6;color:#0B0B0F}
+.bar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:20px}
+input.s{flex:1 1 320px;min-height:52px;background:#15151b;border:2px solid #F5F5F0;border-radius:14px;color:#F5F5F0;font:600 17px 'Space Grotesk',sans-serif;padding:0 18px}
+input.s:focus{outline:3px solid #D7FF3A}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chip{font:700 14px 'Space Grotesk',sans-serif;min-height:44px;padding:0 18px;border:2px solid #F5F5F0;background:transparent;color:#F5F5F0;cursor:pointer;border-radius:999px}
+.chip:hover{background:#26262e}.chip.on{background:#D7FF3A;color:#0B0B0F;border-color:#D7FF3A}
+.cnt{font:600 15px 'Unbounded',sans-serif;color:#A8A8B3;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:#15151b;border:2px solid #2c2c36;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:#F5F5F0;transition:transform .2s,border-color .2s}
+.card:hover{transform:translate(-4px,-4px);border-color:#D7FF3A;box-shadow:6px 6px 0 #D7FF3A;color:#F5F5F0}
+.card h2{margin:0;font-size:22px;line-height:1.3;font-weight:700}
+.card .top{display:flex;justify-content:space-between;align-items:center}
+.card .no{font:600 13px 'Unbounded',sans-serif;color:#A8A8B3}
+.card .m{margin-top:auto;font-size:14px;color:#A8A8B3;font-weight:600}
+.more{text-align:center;padding:32px 0 40px}
+footer{border-top:3px solid #D7FF3A;margin-top:24px;padding:48px 0;background:#15151b}
+footer .wrap{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-end}
+.big{font-size:clamp(32px,6vw,72px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.t0{background:#D7FF3A}.t1{background:#FF6BD6}.t2{background:#5CE1FF}.t3{background:#7DF0A6}.t4{background:#FFB347}.t5{background:#B79CFF}.t6{background:#FF8A8A}.t7{background:#9BE7FF}.t8{background:#FFE066}.t9{background:#C4F000}.t10{background:#FFA7E7}.t11{background:#8CF5D2}.t12{background:#E0B3FF}
+</style>
+</head>
+<body>
+<div class="mqbox" aria-hidden="true"><div class="mq" id="mq"></div></div>
+<header><div class="wrap">
+<a class="logo d" href="/">near<span style="color:#D7FF3A">adin</span><span style="color:#FF6BD6">.net</span></a>
+<nav aria-label="Ana menü"><a href="#liste">Başlıklar</a><a href="#kategoriler">Kategoriler</a><a href="#alt">Hakkında</a></nav>
+</div></header>
+<main>
+<section class="wrap hero">
+<div style="display:flex;flex-direction:column;justify-content:center">
+<span class="tag t1" style="align-self:flex-start" id="durum">Canlı akış</span>
+<h1 class="d" style="margin-top:24px">NE<br>ARARSAN<br><span style="color:#D7FF3A">ADIN</span><span style="color:#FF6BD6">!</span></h1>
+<p class="lead">Haber, teknoloji, sağlık, yaşam, spor, yemek ve daha fazlası. Türkiye’nin gündemi tek sayfada, sürekli akıyor.</p>
+<div><a href="#liste" class="btn">Akışa dal ↓</a></div>
+</div>
+<a class="hot" id="hero" href="#liste"><span class="tag k" id="hCat"></span><div class="t d" id="hTitle"></div><div style="font-weight:700;font-size:15px" id="hMeta"></div></a>
+</section>
+<section class="wrap" id="kategoriler">
+<div class="bar"><input class="s" id="q" type="search" aria-label="Başlıklarda ara" placeholder="Başlıklarda ara: deprem, yapay zeka, dolar…"><button class="chip on" id="bNew">En yeni</button><button class="chip" id="bHot">Karışık</button></div>
+<div class="chips" id="chips"></div>
+</section>
+<section class="wrap" id="liste">
+<div class="cnt" id="cnt"></div>
+<div class="grid" id="grid"></div>
+<div class="more"><button class="btn" id="more">Daha fazla yükle (+24)</button></div>
+</section>
+</main>
+<footer id="alt"><div class="wrap">
+<div class="big d">near<span style="color:#D7FF3A">adin</span>.net</div>
+<div style="color:#C9C9D2;font-size:16px;line-height:1.6;max-width:420px">Ne ararsan, adın burada. Başlıklar kaynaklarına bağlanır. © 2026 nearadin.net</div>
+</div></footer>
+<noscript><p class="wrap">Başlık akışını görmek için JavaScript gerekli.</p></noscript>
+<script>
+(function(){
+var CATS=['Gündem','Ekonomi','Teknoloji','Sağlık','Yaşam','Spor','Magazin','Bilim','Otomobil','Eğitim','Yemek','Seyahat','Oyun'];
+var SAMPLE={Gündem:['Asgari ücret','Kira artışı','Deprem hazırlığı','Toplu taşıma','Emeklilik düzenlemesi','Okul servisleri'],Ekonomi:['Dolar ve euro','Altın fiyatları','Borsa İstanbul','Enflasyon','Konut kredisi','Faiz kararı'],Teknoloji:['Yapay zeka','Yeni iPhone','Siber güvenlik','5G altyapısı','Akıllı saatler','Yerli çip üretimi'],Sağlık:['Uyku düzeni','Bağışıklık sistemi','Kalp sağlığı','D vitamini','Göz sağlığı','Su tüketimi'],Yaşam:['Ev dekorasyonu','Minimalist yaşam','Balkon bahçesi','Zaman yönetimi','Sabah rutini','Uzaktan çalışma'],Spor:['Süper Lig','Milli takım','Basketbol Ligi','Evde antrenman','Koşu programı','Transfer dönemi'],Magazin:['Dizi dünyası','Festival takvimi','Yeni albümler','Sinema vizyonu','Moda haftası','Sahne performansları'],Bilim:['Uzay görevleri','İklim değişikliği','Mars keşifleri','Kuantum bilgisayar','Gen düzenleme','Meteor yağmuru'],Otomobil:['Elektrikli otomobil','Hibrit modeller','Lastik bakımı','İkinci el piyasası','Yakıt tasarrufu','Kış sürüşü'],Eğitim:['YKS hazırlığı','Üniversite tercihleri','Online kurslar','Burs imkanları','Yabancı dil öğrenimi','Verimli ders çalışma'],Yemek:['Ev yapımı mantı','Zeytinyağlılar','Kahvaltı sofrası','Baklava','Fırın yemekleri','Sokak lezzetleri'],Seyahat:['Kapadokya','Ege koyları','Karadeniz yaylaları','Kamp alanları','Butik oteller','Hafta sonu kaçamakları'],Oyun:['Mobil oyunlar','E-spor turnuvaları','Konsol oyunları','Bağımsız yapımlar','Oyun bilgisayarı','Retro oyunlar']};
+var TPL=[function(x,n){return x+' için uzmanlardan '+n+' pratik öneri'},function(x,n){return x+': bilmeniz gereken '+n+' şey'},function(x){return x+' rehberi: adım adım'}];
+var all=[],cat='Tümü',q='',n=24,sort='new',live=false;
+function sample(){var o=[],i=0,now=Date.now();TPL.forEach(function(t){CATS.forEach(function(c){SAMPLE[c].forEach(function(x){var h=(i*2654435761)%9973;o.push({baslik:t(x,(h%7)+3),kategori:c,link:'',kaynak:'',tarih:new Date(now-((h%55)+2)*60000).toISOString()});i++})})});return o}
+function ago(iso){var m=Math.max(1,Math.round((Date.now()-new Date(iso))/60000));if(m<60)return m+' dk önce';if(m<1440)return Math.floor(m/60)+' sa önce';return Math.floor(m/1440)+' gün önce'}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function list(){var s=q.toLocaleLowerCase('tr');var l=all.filter(function(a){return(cat==='Tümü'||a.kategori===cat)&&(!s||a.baslik.toLocaleLowerCase('tr').indexOf(s)>-1)});l.sort(function(a,b){return sort==='new'?new Date(b.tarih)-new Date(a.tarih):(a.baslik<b.baslik?-1:1)});return l}
+function render(){
+var l=list(),g=document.getElementById('grid');g.textContent='';
+l.slice(0,n).forEach(function(a,k){
+var c=a.link?el('a','card'):el('article','card');if(a.link){c.href=a.link;c.target='_blank';c.rel='noopener nofollow'}
+var top=el('div','top'),tg=el('span','tag t'+Math.max(0,CATS.indexOf(a.kategori)),a.kategori);top.appendChild(tg);top.appendChild(el('span','no','#'+String(k+1).padStart(3,'0')));
+c.appendChild(top);c.appendChild(el('h2','',a.baslik));c.appendChild(el('div','m',ago(a.tarih)+(a.kaynak?' · '+a.kaynak:'')));g.appendChild(c)});
+document.getElementById('cnt').textContent=Math.min(n,l.length)+' / '+l.length+' başlık'+(l.length?'':' — bu aramaya uyan başlık yok');
+document.getElementById('more').style.display=l.length>n?'':'none';
+var h=l[0];if(h){var he=document.getElementById('hero');if(h.link){he.href=h.link;he.target='_blank';he.rel='noopener nofollow'}document.getElementById('hCat').textContent='Günün manşeti · '+h.kategori;document.getElementById('hTitle').textContent=h.baslik;document.getElementById('hMeta').textContent=ago(h.tarih)+(h.kaynak?' · '+h.kaynak:'')}
+var mq=document.getElementById('mq');mq.textContent='';all.slice(0,24).concat(all.slice(0,24)).forEach(function(a){mq.appendChild(el('span','','● '+a.kategori.toUpperCase()+': '+a.baslik))});
+document.getElementById('durum').textContent=(live?'Canlı akış':'Örnek akış')+' · '+all.length+' başlık';
+document.querySelectorAll('#chips .chip').forEach(function(b){b.className=b.textContent===cat?'chip on':'chip'});
+document.getElementById('bNew').className=sort==='new'?'chip on':'chip';document.getElementById('bHot').className=sort==='new'?'chip':'chip on'}
+function load(){fetch('haberler.json?v='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){if(d&&d.length){all=d;live=true;render()}}).catch(function(){})}
+var ch=document.getElementById('chips');['Tümü'].concat(CATS).forEach(function(nm){var b=el('button','chip',nm);b.onclick=function(){cat=nm;n=24;render()};ch.appendChild(b)});
+document.getElementById('q').oninput=function(e){q=e.target.value;n=24;render()};
+document.getElementById('bNew').onclick=function(){sort='new';render()};
+document.getElementById('bHot').onclick=function(){sort='abc';render()};
+document.getElementById('more').onclick=function(){n+=24;render()};
+all=sample();render();load();setInterval(load,300000);
+})();
+</script>
+</body>
+</html>
